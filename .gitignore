@@ -1,0 +1,12 @@
+# System & dotfiles
+.*
+!.gitignore
+
+# Caches
+node_modules/
+__pycache__/
+*.pyc
+
+# Credentials
+.git-credentials
+.env
