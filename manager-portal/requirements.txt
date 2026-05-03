@@ -1,0 +1,33 @@
+# Web framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+
+# Database
+sqlalchemy==2.0.35
+alembic==1.13.3
+
+# Config
+pyyaml==6.0.2
+python-dotenv==1.0.1
+
+# File watching (Zoom)
+watchdog==5.0.3
+
+# Gmail
+google-api-python-client==2.149.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.1
+
+# Slack
+slack-sdk==3.33.1
+
+# AI extraction
+anthropic==0.34.2
+
+# Scheduling
+apscheduler==3.10.4
+
+# Utilities
+python-multipart==0.0.12
+python-dateutil==2.9.0
+httpx==0.27.2

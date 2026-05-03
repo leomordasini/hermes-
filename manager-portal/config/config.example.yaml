@@ -1,0 +1,45 @@
+# Manager Portal — Config Template
+# Copy this to config.work.yaml or config.personal.yaml and fill in your values.
+# These files are gitignored — never commit real credentials.
+
+profile: work  # work | personal
+
+server:
+  port: 8000
+  host: 127.0.0.1
+
+database:
+  path: data/work.db
+
+zoom:
+  folder: ~/Documents/Zoom
+  watch: true
+  poll_interval_seconds: 60
+
+gmail:
+  enabled: true
+  token_path: ~/.portal/gmail-work-token.json
+  credentials_path: config/gmail-credentials.json
+  poll_interval_minutes: 30
+  search_queries:
+    - "to:me action required"
+    - "to:me please"
+    - "to:me by EOD"
+    - "to:me by Friday"
+    - "to:me by Monday"
+    - "to:me by next week"
+
+slack:
+  enabled: false
+  user_token: "xoxp-your-token-here"
+  poll_interval_minutes: 30
+  dm_enabled: true
+  channels_to_watch: []
+
+extraction:
+  model: claude-sonnet-4-7
+  anthropic_api_key: "sk-ant-your-key-here"
+
+user:
+  name: Leo Mordasini
+  email: leo@datadog.com

@@ -1,0 +1,50 @@
+# ── Manager Portal .gitignore ──────────────────────
+
+# Secrets & credentials — NEVER commit these
+config/config.work.yaml
+config/config.personal.yaml
+config/gmail-credentials.json
+.env
+.env.*
+*.token.json
+~/.portal/
+
+# Databases — gitignored, backed up separately
+data/work.db
+data/personal.db
+data/*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Alembic (keep env.py and alembic.ini, ignore nothing else)
+# migrations are committed
+
+# Temp
+tmp/
+temp/

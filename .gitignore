@@ -10,3 +10,12 @@ __pycache__/
 # Credentials
 .git-credentials
 .env
+
+# Manager Portal
+manager-portal/data/*.db
+manager-portal/data/*.db-shm
+manager-portal/data/*.db-wal
+manager-portal/config/config.work.yaml
+manager-portal/config/config.personal.yaml
+manager-portal/config/gmail-credentials.json
+manager-portal/.venv/
