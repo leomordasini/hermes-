@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Goal Tracker</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-hover: #79c0ff;
+      --green: #3fb950;
+      --green-bg: rgba(63, 185, 80, 0.15);
+      --yellow: #d29922;
+      --yellow-bg: rgba(210, 153, 34, 0.15);
+      --red: #f85149;
+      --red-bg: rgba(248, 81, 73, 0.15);
+      --radius: 12px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    nav .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav .logo span { color: var(--accent); }
+
+    .nav-tabs {
+      display: flex;
+      gap: 4px;
+      background: var(--bg);
+      padding: 4px;
+      border-radius: 8px;
+    }
+
+    .nav-tab {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-tab.active {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .nav-tab:hover:not(.active) {
+      color: var(--text);
+      background: var(--border);
+    }
+
+    /* ── Main Layout ── */
+    main {
+      flex: 1;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* ── Date Header ── */
+    .date-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .date-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .date-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ── Progress Bar ── */
+    .progress-section {
+      margin-bottom: 32px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--green));
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    /* ── Goal Cards ── */
+    .goals-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .goal-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: all 0.2s;
+    }
+
+    .goal-card:hover {
+      border-color: var(--accent);
+    }
+
+    .goal-card.completed {
+      border-color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .goal-card.completed .goal-text {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .goal-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      background: transparent;
+      color: transparent;
+      font-size: 14px;
+    }
+
+    .goal-check:hover {
+      border-color: var(--green);
+    }
+
+    .goal-card.completed .goal-check {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+    }
+
+    .goal-info { flex: 1; }
+
+    .goal-text {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .goal-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 12px;
+    }
+
+    .priority-badge {
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .priority-high { background: var(--red-bg); color: var(--red); }
+    .priority-medium { background: var(--yellow-bg); color: var(--yellow); }
+    .priority-low { background: var(--green-bg); color: var(--green); }
+
+    .empty-state {
+      text-align: center;
+      padding: 64px 0;
+      color: var(--text-muted);
+    }
+
+    .empty-state .icon { font-size: 3rem; margin-bottom: 16px; }
+    .empty-state p { font-size: 1rem; }
+
+    /* ── Admin Console ── */
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .admin-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--accent-hover); }
+
+    .btn-danger {
+      background: var(--red-bg);
+      color: var(--red);
+    }
+
+    .btn-danger:hover { background: var(--red); color: #fff; }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 6px 10px;
+    }
+
+    .btn-ghost:hover { color: var(--text); background: var(--border); }
+
+    /* ── Form ── */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .form-card h3 {
+      margin-bottom: 16px;
+      font-size: 1.1rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input, select, textarea {
+      padding: 10px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    textarea { resize: vertical; min-height: 60px; }
+
+    /* ── Admin Goal List ── */
+    .admin-goal {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+    }
+
+    .admin-goal .drag-handle {
+      color: var(--text-muted);
+      cursor: grab;
+      font-size: 1.2rem;
+    }
+
+    .admin-goal .goal-info { flex: 1; }
+    .admin-goal .actions { display: flex; gap: 4px; }
+
+    /* ── Stats ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-card .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      main { padding: 20px 16px; }
+      .form-row { flex-direction: column; }
+      .stats-row { grid-template-columns: 1fr; }
+      nav { flex-direction: column; gap: 12px; }
+    }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      width: 90%;
+      max-width: 480px;
+    }
+
+    .modal h3 { margin-bottom: 20px; }
+    .modal .btn { margin-top: 8px; }
+
+    /* ── Streak ── */
+    .streak-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--yellow-bg);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--yellow);
+      margin-top: 8px;
+    }
+
+    /* ── Motivational Quote ── */
+    .quote {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="logo">🎯 <span>Daily Goals</span></div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="switchView('tracker')">Tracker</button>
+    <button class="nav-tab" onclick="switchView('admin')">Admin Console</button>
+  </div>
+</nav>
+
+<!-- Tracker View -->
+<main>
+  <div id="tracker-view" class="view active">
+    <div class="date-header">
+      <h1 id="today-date"></h1>
+      <p id="today-greeting"></p>
+      <div id="streak-display"></div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-label">Total Goals</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-done" style="color: var(--green)">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="stat-remaining" style="color: var(--accent)">0</div>
+        <div class="stat-label">Remaining</div>
+      </div>
+    </div>
+
+    <div class="progress-section">
+      <div class="progress-label">
+        <span>Progress</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="goals-list" id="tracker-goals"></div>
+
+    <div class="quote" id="daily-quote"></div>
+  </div>
+
+  <!-- Admin View -->
+  <div id="admin-view" class="view">
+    <div class="admin-header">
+      <h2>⚙️ Admin Console</h2>
+      <button class="btn btn-primary" onclick="openAddModal()">+ Add Goal</button>
+    </div>
+
+    <div class="form-card">
+      <h3>📋 Today's Goals</h3>
+      <div id="admin-goals"></div>
+      <div id="admin-empty" class="empty-state" style="padding: 32px 0">
+        <div class="icon">📝</div>
+        <p>No goals yet. Add your first goal!</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>🗑️ Danger Zone</h3>
+      <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 12px">Clear all goals for today and start fresh.</p>
+      <button class="btn btn-danger" onclick="clearAllGoals()">Clear All Goals</button>
+    </div>
+  </div>
+</main>
+
+<!-- Add/Edit Modal -->
+<div class="modal-overlay" id="goal-modal">
+  <div class="modal">
+    <h3 id="modal-title">Add New Goal</h3>
+    <input type="hidden" id="edit-goal-id">
+    <div class="form-group" style="margin-bottom: 12px">
+      <label>Goal</label>
+      <input type="text" id="goal-input" placeholder="What do you want to accomplish?">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Priority</label>
+        <select id="goal-priority">
+          <option value="high">🔴 High</option>
+          <option value="medium" selected>🟡 Medium</option>
+          <option value="low">🟢 Low</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" id="goal-category" placeholder="e.g. Work, Health">
+      </div>
+    </div>
+    <div class="form-group" style="margin-bottom: 16px">
+      <label>Notes (optional)</label>
+      <textarea id="goal-notes" placeholder="Any extra details..."></textarea>
+    </div>
+    <div style="display: flex; gap: 8px; justify-content: flex-end;">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveGoal()">Save Goal</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Data Layer (localStorage) ──
+  const STORAGE_KEY = 'daily-goals';
+  const STREAK_KEY = 'goal-streak';
+
+  function getTodayKey() {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  function loadGoals() {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    const today = getTodayKey();
+    if (!data[today]) data[today] = [];
+    return data;
+  }
+
+  function saveGoals(data) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function getTodayGoals() {
+    return loadGoals()[getTodayKey()] || [];
+  }
+
+  function setTodayGoals(goals) {
+    const data = loadGoals();
+    data[getTodayKey()] = goals;
+    saveGoals(data);
+  }
+
+  // ── Streak Logic ──
+  function getStreak() {
+    const data = loadGoals();
+    let streak = 0;
+    const today = new Date();
+
+    for (let i = 1; i <= 365; i++) {
+      const d = new Date(today);
+      d.setDate(d.getDate() - i);
+      const key = d.toISOString().split('T')[0];
+      const dayGoals = data[key];
+      if (dayGoals && dayGoals.length > 0 && dayGoals.every(g => g.completed)) {
+        streak++;
+      } else if (dayGoals && dayGoals.length > 0) {
+        break;
+      } else {
+        break;
+      }
+    }
+
+    // Check if today is completed too
+    const todayGoals = data[getTodayKey()];
+    if (todayGoals && todayGoals.length > 0 && todayGoals.every(g => g.completed)) {
+      streak++;
+    }
+
+    return streak;
+  }
+
+  // ── Render Tracker View ──
+  function renderTracker() {
+    const goals = getTodayGoals();
+    const total = goals.length;
+    const done = goals.filter(g => g.completed).length;
+    const remaining = total - done;
+    const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    document.getElementById('stat-total').textContent = total;
+    document.getElementById('stat-done').textContent = done;
+    document.getElementById('stat-remaining').textContent = remaining;
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('progress-fill').style.width = pct + '%';
+
+    const streak = getStreak();
+    const streakEl = document.getElementById('streak-display');
+    if (streak > 0) {
+      streakEl.innerHTML = `<div class="streak-badge">🔥 ${streak} day streak!</div>`;
+    } else {
+      streakEl.innerHTML = '';
+    }
+
+    const container = document.getElementById('tracker-goals');
+    if (total === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="icon">🎯</div>
+          <p>No goals set for today yet.<br>Head to the Admin Console to add some!</p>
+        </div>`;
+      return;
+    }
+
+    // Sort: incomplete first, then by priority
+    const priorityOrder = { high: 0, medium: 1, low: 2 };
+    const sorted = [...goals].sort((a, b) => {
+      if (a.completed !== b.completed) return a.completed ? 1 : -1;
+      return (priorityOrder[a.priority] || 1) - (priorityOrder[b.priority] || 1);
+    });
+
+    container.innerHTML = sorted.map(g => `
+      <div class="goal-card ${g.completed ? 'completed' : ''}" data-id="${g.id}">
+        <button class="goal-check" onclick="toggleGoal('${g.id}')">
+          ${g.completed ? '✓' : ''}
+        </button>
+        <div class="goal-info">
+          <div class="goal-text">${escHtml(g.text)}</div>
+          <div class="goal-meta">
+            <span class="priority-badge priority-${g.priority}">${g.priority}</span>
+            ${g.category ? `<span>📁 ${escHtml(g.category)}</span>` : ''}
+            ${g.notes ? `<span>📝 ${escHtml(g.notes)}</span>` : ''}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Render Admin View ──
+  function renderAdmin() {
+    const goals = getTodayGoals();
+    const container = document.getElementById('admin-goals');
+    const empty = document.getElementById('admin-empty');
+
+    if (goals.length === 0) {
+      container.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+
+    empty.style.display = 'none';
+    container.innerHTML = goals.map(g => `
+      <div class="admin-goal">
+        <span class="drag-handle">⠿</span>
+        <div class="goal-info">
+          <div class="goal-text">${escHtml(g.text)}</div>
+          <div class="goal-meta">
+            <span class="priority-badge priority-${g.priority}">${g.priority}</span>
+            ${g.category ? `<span>📁 ${escHtml(g.category)}</span>` : ''}
+            <span>${g.completed ? '✅ Done' : '⏳ Pending'}</span>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" onclick="editGoal('${g.id}')" title="Edit">✏️</button>
+          <button class="btn btn-ghost" onclick="deleteGoal('${g.id}')" title="Delete">🗑️</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── Actions ──
+  function toggleGoal(id) {
+    const goals = getTodayGoals();
+    const goal = goals.find(g => g.id === id);
+    if (goal) {
+      goal.completed = !goal.completed;
+      setTodayGoals(goals);
+      renderTracker();
+      renderAdmin();
+    }
+  }
+
+  function deleteGoal(id) {
+    if (!confirm('Delete this goal?')) return;
+    const goals = getTodayGoals().filter(g => g.id !== id);
+    setTodayGoals(goals);
+    renderTracker();
+    renderAdmin();
+  }
+
+  function clearAllGoals() {
+    if (!confirm('Clear ALL goals for today? This cannot be undone.')) return;
+    setTodayGoals([]);
+    renderTracker();
+    renderAdmin();
+  }
+
+  function editGoal(id) {
+    const goals = getTodayGoals();
+    const goal = goals.find(g => g.id === id);
+    if (!goal) return;
+
+    document.getElementById('modal-title').textContent = 'Edit Goal';
+    document.getElementById('edit-goal-id').value = id;
+    document.getElementById('goal-input').value = goal.text;
+    document.getElementById('goal-priority').value = goal.priority;
+    document.getElementById('goal-category').value = goal.category || '';
+    document.getElementById('goal-notes').value = goal.notes || '';
+    document.getElementById('goal-modal').classList.add('active');
+  }
+
+  function openAddModal() {
+    document.getElementById('modal-title').textContent = 'Add New Goal';
+    document.getElementById('edit-goal-id').value = '';
+    document.getElementById('goal-input').value = '';
+    document.getElementById('goal-priority').value = 'medium';
+    document.getElementById('goal-category').value = '';
+    document.getElementById('goal-notes').value = '';
+    document.getElementById('goal-modal').classList.add('active');
+    document.getElementById('goal-input').focus();
+  }
+
+  function closeModal() {
+    document.getElementById('goal-modal').classList.remove('active');
+  }
+
+  function saveGoal() {
+    const text = document.getElementById('goal-input').value.trim();
+    if (!text) { alert('Please enter a goal!'); return; }
+
+    const priority = document.getElementById('goal-priority').value;
+    const category = document.getElementById('goal-category').value.trim();
+    const notes = document.getElementById('goal-notes').value.trim();
+    const editId = document.getElementById('edit-goal-id').value;
+
+    const goals = getTodayGoals();
+
+    if (editId) {
+      const goal = goals.find(g => g.id === editId);
+      if (goal) {
+        goal.text = text;
+        goal.priority = priority;
+        goal.category = category;
+        goal.notes = notes;
+      }
+    } else {
+      goals.push({
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        text,
+        priority,
+        category,
+        notes,
+        completed: false,
+        createdAt: new Date().toISOString()
+      });
+    }
+
+    setTodayGoals(goals);
+    closeModal();
+    renderTracker();
+    renderAdmin();
+  }
+
+  // ── View Switching ──
+  function switchView(view) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+    document.getElementById(view + '-view').classList.add('active');
+    event.target.classList.add('active');
+
+    if (view === 'admin') renderAdmin();
+    else renderTracker();
+  }
+
+  // ── Helpers ──
+  function escHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ── Date & Quote ──
+  function setDateAndQuote() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('today-date').textContent = now.toLocaleDateString('en-US', options);
+
+    const hour = now.getHours();
+    let greeting = 'Good evening';
+    if (hour < 12) greeting = 'Good morning';
+    else if (hour < 17) greeting = 'Good afternoon';
+    document.getElementById('today-greeting').textContent = `${greeting}, Leo! Here are your goals for today.`;
+
+    const quotes = [
+      '"The secret of getting ahead is getting started." — Mark Twain',
+      '"Small daily improvements are the key to staggering long-term results." — Robin Sharma',
+      '"You don\'t have to be great to start, but you have to start to be great." — Zig Ziglar',
+      '"Focus on being productive instead of busy." — Tim Ferriss',
+      '"It always seems impossible until it\'s done." — Nelson Mandela',
+      '"The only way to do great work is to love what you do." — Steve Jobs',
+      '"Done is better than perfect." — Sheryl Sandberg',
+      '"What gets measured gets managed." — Peter Drucker',
+      '"Discipline is the bridge between goals and accomplishment." — Jim Rohn',
+      '"A goal without a plan is just a wish." — Antoine de Saint-Exupéry'
+    ];
+
+    const dayIndex = now.getDate() % quotes.length;
+    document.getElementById('daily-quote').textContent = quotes[dayIndex];
+  }
+
+  // ── Keyboard Shortcut ──
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ── Init ──
+  setDateAndQuote();
+  renderTracker();
+</script>
+
+</body>
+</html>
