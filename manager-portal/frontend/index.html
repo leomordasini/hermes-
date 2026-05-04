@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manager Portal</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🐕</text></svg>">
+  <link rel="stylesheet" href="/static/app/css/style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="boot-screen">
+      <div class="boot-logo">🐕</div>
+      <div class="boot-text">Manager Portal</div>
+      <div class="boot-sub">Loading…</div>
+    </div>
+  </div>
+
+  <script type="module">
+    import './app/modules/dashboard.js';
+    import './app/modules/inbox.js';
+    import './app/modules/team.js';
+    import './app/modules/projects.js';
+    import './app/modules/actions.js';
+    import './app/modules/settings.js';
+    import { boot } from './app/app.js';
+
+    boot().catch(err => {
+      document.getElementById('app').innerHTML = `
+        <div class="boot-screen">
+          <div class="boot-logo">⚠️</div>
+          <div class="boot-text" style="color:var(--red)">Failed to start</div>
+          <div class="boot-sub">${err.message}</div>
+          <div class="boot-sub" style="margin-top:12px;font-size:0.8rem;opacity:0.6">
+            Is the backend running? <code>make work</code>
+          </div>
+        </div>`;
+    });
+  </script>
+</body>
+</html>

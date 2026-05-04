@@ -117,12 +117,17 @@ async def on_shutdown():
 _FRONTEND_DIR = Path(__file__).parent.parent / "frontend"
 
 if _FRONTEND_DIR.exists():
+    # Mount at /static AND /app so ES module imports work as both
+    # /static/app/... (link href) and /app/... (JS import paths)
     app.mount("/static", StaticFiles(directory=str(_FRONTEND_DIR)), name="static")
+    app.mount("/app", StaticFiles(directory=str(_FRONTEND_DIR / "app")), name="app_modules")
 
 
 @app.get("/", include_in_schema=False)
 async def serve_index():
     index = _FRONTEND_DIR / "index.html"
+    if not index.exists():
+        return JSONResponse({"error": "Frontend not found. Run from manager-portal/ directory."}, status_code=404)
     return FileResponse(str(index))
 
 
