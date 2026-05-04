@@ -21,7 +21,7 @@ except ImportError:
     _has_scheduler = False
 
 try:
-    from backend import zoom_watcher as _zoom_watcher
+    from backend.integrations import zoom_watcher as _zoom_watcher
     _has_zoom_watcher = True
 except ImportError:
     logging.warning("zoom_watcher module not found — Zoom watching disabled (Phase 2)")
@@ -83,7 +83,7 @@ async def on_startup():
         zoom_watch_enabled = config.get("zoom", {}).get("watch", False)
         if zoom_watch_enabled:
             try:
-                _zoom_watcher.start()
+                _zoom_watcher.start_watcher()
                 logger.info("Zoom watcher started.")
             except Exception as exc:
                 logger.warning(f"Could not start Zoom watcher: {exc}")
@@ -97,14 +97,14 @@ async def on_shutdown():
 
     if _has_scheduler and _scheduler is not None:
         try:
-            _scheduler.stop()
+            _scheduler.shutdown(wait=False)
             logger.info("Scheduler stopped.")
         except Exception as exc:
             logger.warning(f"Error stopping scheduler: {exc}")
 
     if _has_zoom_watcher and _zoom_watcher is not None:
         try:
-            _zoom_watcher.stop()
+            _zoom_watcher.stop_watcher()
             logger.info("Zoom watcher stopped.")
         except Exception as exc:
             logger.warning(f"Error stopping Zoom watcher: {exc}")
@@ -162,8 +162,8 @@ async def manual_sync(source: str):
     if source == "zoom":
         if _has_zoom_watcher and _zoom_watcher is not None:
             try:
-                _zoom_watcher.scan_now()
-                return {"status": "ok", "source": "zoom", "message": "Zoom scan triggered."}
+                result = _zoom_watcher.scan_now()
+                return {"status": "ok", "source": "zoom", "result": result}
             except Exception as exc:
                 return JSONResponse(
                     status_code=500,
