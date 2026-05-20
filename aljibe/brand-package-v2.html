@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aljibe — Brand Identity Package v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================
+   TOKENS — extracted from the logo
+   ============================================================ */
+:root {
+  --parchment:   #EDE0C4;   /* aged paper background */
+  --parchment-dk:#D9C9A3;   /* darker parchment panel */
+  --navy:        #1B3A6B;   /* letterform blue */
+  --navy-dk:     #0F2245;   /* deep navy shadow */
+  --gold:        #C49A2A;   /* scrollwork / outline */
+  --gold-lt:     #E0B94A;   /* highlight gold */
+  --gold-dk:     #9A7818;   /* deep gold shadow */
+  --brick:       #9C3E2A;   /* well bricks */
+  --brick-lt:    #C4512E;   /* lighter brick highlight */
+  --crimson:     #7A1C1C;   /* floral accent */
+  --forest:      #3D6030;   /* leaf green */
+  --ink:         #2C1810;   /* deep outline / text */
+  --cream:       #F7F0E0;   /* lightest background */
+  --iron:        #4A4035;   /* wrought iron grey-brown */
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* parchment texture via CSS noise */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+section { position: relative; z-index: 1; }
+
+/* ============================================================
+   ORNAMENT HELPERS
+   ============================================================ */
+.ornament-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 24px 0;
+  color: var(--gold);
+  font-size: 20px;
+}
+.ornament-rule::before,
+.ornament-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dk), transparent);
+}
+
+.section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  margin-bottom: 8px;
+}
+
+.vintage-border {
+  border: 2px solid var(--gold);
+  outline: 1px solid var(--gold-dk);
+  outline-offset: -6px;
+  padding: 48px;
+}
+
+.vintage-border-thin {
+  border: 1px solid var(--gold);
+  outline: 1px solid var(--parchment-dk);
+  outline-offset: -4px;
+}
+
+/* ============================================================
+   COVER
+   ============================================================ */
+.cover {
+  min-height: 100vh;
+  background: var(--parchment);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* aged paper corner stains */
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(156,62,42,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 0%, rgba(196,154,42,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, rgba(196,154,42,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(156,62,42,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(27,58,107,0.04) 0%, transparent 70%);
+}
+
+.cover-meta {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.cover-logo-zone {
+  position: relative;
+  width: 580px;
+  max-width: 90vw;
+}
+
+/* THE LOGO — primary showcase */
+.logo-primary {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  box-shadow:
+    0 2px 4px rgba(44,24,16,0.15),
+    0 8px 32px rgba(44,24,16,0.20),
+    0 0 0 1px rgba(196,154,42,0.3);
+}
+
+/* Fallback / placeholder shown when no img src */
+.logo-primary-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--parchment-dk);
+  border: 2px dashed var(--gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 4px;
+}
+
+.cover-tagline {
+  margin-top: 40px;
+  text-align: center;
+  position: relative;
+}
+.cover-tagline h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(28px, 5vw, 52px);
+  color: var(--navy);
+  letter-spacing: 6px;
+  text-shadow: 2px 2px 0 var(--gold-dk);
+  margin-bottom: 12px;
+}
+.cover-tagline p {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--brick);
+}
+
+.cover-description {
+  max-width: 560px;
+  text-align: center;
+  margin-top: 32px;
+  font-style: italic;
+  color: var(--ink);
+  opacity: 0.75;
+  font-size: 15px;
+  position: relative;
+}
+
+/* ============================================================
+   SECTION WRAPPER
+   ============================================================ */
+.section {
+  padding: 80px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(18px, 3vw, 28px);
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.section-subtitle {
+  text-align: center;
+  color: var(--ink);
+  opacity: 0.65;
+  font-style: italic;
+  margin-bottom: 48px;
+  font-size: 15px;
+}
+
+.divider-section {
+  background: var(--navy);
+  padding: 48px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.divider-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(196,154,42,0.08) 0%, transparent 50%, rgba(196,154,42,0.08) 100%);
+}
+.divider-section h2 {
+  font-family: 'Cinzel Decorative', serif;
+  color: var(--gold);
+  font-size: clamp(20px, 4vw, 36px);
+  letter-spacing: 4px;
+  position: relative;
+}
+.divider-section p {
+  color: var(--parchment);
+  margin-top: 12px;
+  font-style: italic;
+  opacity: 0.8;
+  position: relative;
+}
+
+/* ============================================================
+   COLOR PALETTE
+   ============================================================ */
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.swatch-card {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(44,24,16,0.15);
+  border: 1px solid rgba(196,154,42,0.2);
+}
+
+.swatch-color {
+  height: 120px;
+  position: relative;
+}
+.swatch-color::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 100%);
+}
+
+.swatch-info {
+  background: white;
+  padding: 16px;
+}
+.swatch-name {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--navy);
+  display: block;
+  margin-bottom: 4px;
+}
+.swatch-hex {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--ink);
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 6px;
+}
+.swatch-role {
+  font-size: 11px;
+  color: var(--ink);
+  opacity: 0.55;
+  font-style: italic;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.type-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 700px) { .type-showcase { grid-template-columns: 1fr; } }
+
+.type-card {
+  background: var(--parchment);
+  border: 1px solid var(--gold);
+  padding: 40px;
+  border-radius: 4px;
+}
+.type-card-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  margin-bottom: 20px;
+}
+.type-display-sample {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.type-serif-sample {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.type-body-sample {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  color: var(--ink);
+  opacity: 0.8;
+  line-height: 1.7;
+}
+.type-meta {
+  margin-top: 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--brick);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   LOGO SYSTEM — variations
+   ============================================================ */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 700px) { .logo-grid { grid-template-columns: 1fr 1fr; } }
+
+.logo-variant {
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-canvas {
+  flex: 1;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.logo-caption {
+  padding: 12px 16px;
+  background: white;
+  border-top: 1px solid rgba(196,154,42,0.2);
+}
+.logo-caption-name {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--navy);
+  display: block;
+}
+.logo-caption-use {
+  font-size: 11px;
+  color: var(--ink);
+  opacity: 0.55;
+  font-style: italic;
+}
+
+/* SVG logo variations */
+svg.logo-svg { width: 100%; max-width: 220px; height: auto; }
+
+/* ============================================================
+   SOCIAL MEDIA PROFILE IMAGES
+   ============================================================ */
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-platform {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+}
+
+.profile-image-wrap {
+  position: relative;
+}
+
+.profile-img-circle {
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+  box-shadow: 0 8px 32px rgba(44,24,16,0.25);
+}
+
+.profile-img-square {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 8px 32px rgba(44,24,16,0.25);
+}
+
+.profile-specs {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* ============================================================
+   BANNER CONCEPTS
+   ============================================================ */
+.banner-card {
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 32px rgba(44,24,16,0.20);
+}
+.banner-label {
+  background: white;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(196,154,42,0.2);
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* ============================================================
+   PACKAGING LABELS
+   ============================================================ */
+.label-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+}
+
+.candle-label {
+  background: var(--parchment);
+  border: 1px solid var(--gold);
+  outline: 2px solid var(--gold-dk);
+  outline-offset: -8px;
+  border-radius: 4px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(44,24,16,0.12);
+}
+
+.label-top-rule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: var(--gold);
+  font-size: 14px;
+}
+.label-top-rule::before, .label-top-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+}
+
+.label-brand {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 22px;
+  color: var(--navy);
+  letter-spacing: 3px;
+  margin-bottom: 4px;
+}
+.label-tagline {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brick);
+  margin-bottom: 20px;
+}
+.label-scent-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.label-scent-notes {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+.label-weight {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold-dk);
+}
+
+/* ============================================================
+   GUIDELINES
+   ============================================================ */
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 700px) { .guidelines-grid { grid-template-columns: 1fr; } }
+
+.guideline-col h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid;
+}
+.do-col h3 { color: var(--forest); border-color: var(--forest); }
+.dont-col h3 { color: var(--crimson); border-color: var(--crimson); }
+
+.guideline-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.guideline-item::before {
+  flex-shrink: 0;
+  font-size: 16px;
+  margin-top: 1px;
+}
+.do-item::before { content: '✦'; color: var(--forest); }
+.dont-item::before { content: '✕'; color: var(--crimson); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--navy);
+  padding: 60px 40px;
+  text-align: center;
+  color: var(--parchment);
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(196,154,42,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(156,62,42,0.08) 0%, transparent 60%);
+}
+.footer h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 32px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.footer p {
+  font-style: italic;
+  opacity: 0.7;
+  position: relative;
+  margin-bottom: 8px;
+}
+.footer .footer-meta {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  margin-top: 32px;
+  position: relative;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     COVER
+     ============================================================ -->
+<section class="cover">
+  <div class="cover-meta">Aljibe · Brand Identity Package · 2025</div>
+
+  <div class="cover-logo-zone">
+    <!-- Primary badge mark — all the visual language of the original logo -->
+    <svg width="100%" viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 8px 32px rgba(44,24,16,0.35));">
+      <defs>
+        <radialGradient id="coverGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#EDE0C4" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#1B3A6B" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- OUTER ORNATE RING — double border like the logo -->
+      <ellipse cx="280" cy="210" rx="240" ry="195" fill="none" stroke="#1B3A6B" stroke-width="9"/>
+      <ellipse cx="280" cy="210" rx="227" ry="182" fill="none" stroke="#C49A2A" stroke-width="2.5"/>
+      <ellipse cx="280" cy="210" rx="215" ry="170" fill="none" stroke="#C49A2A" stroke-width="0.8" stroke-dasharray="6 4"/>
+
+      <!-- ORNAMENTAL SCROLLWORK — left side (like the logo's baroque flourishes) -->
+      <!-- Left large scroll -->
+      <path d="M50,210 Q30,170 55,140 Q75,115 95,130 Q115,145 100,165 Q90,178 78,170" stroke="#C49A2A" stroke-width="3" fill="none"/>
+      <path d="M50,210 Q30,250 55,280 Q75,305 100,290 Q120,278 105,258" stroke="#C49A2A" stroke-width="3" fill="none"/>
+      <!-- Left inner flourish -->
+      <path d="M80,170 Q65,155 75,140" stroke="#C49A2A" stroke-width="2" fill="none"/>
+      <path d="M60,195 Q45,180 55,165" stroke="#C49A2A" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <!-- Left leaf cluster -->
+      <ellipse cx="68" cy="148" rx="14" ry="6" fill="#3D6030" transform="rotate(-45 68 148)" opacity="0.85"/>
+      <ellipse cx="82" cy="140" rx="12" ry="5" fill="#3D6030" transform="rotate(-30 82 140)" opacity="0.75"/>
+      <ellipse cx="55" cy="160" rx="10" ry="5" fill="#3D6030" transform="rotate(-55 55 160)" opacity="0.7"/>
+      <!-- Left floral -->
+      <circle cx="96" cy="132" r="8" fill="#7A1C1C"/>
+      <circle cx="96" cy="132" r="4" fill="#C49A2A"/>
+      <circle cx="72" cy="145" r="5" fill="#7A1C1C" opacity="0.8"/>
+      <!-- Right large scroll (mirror) -->
+      <path d="M510,210 Q530,170 505,140 Q485,115 465,130 Q445,145 460,165 Q470,178 482,170" stroke="#C49A2A" stroke-width="3" fill="none"/>
+      <path d="M510,210 Q530,250 505,280 Q485,305 460,290 Q440,278 455,258" stroke="#C49A2A" stroke-width="3" fill="none"/>
+      <path d="M480,170 Q495,155 485,140" stroke="#C49A2A" stroke-width="2" fill="none"/>
+      <path d="M500,195 Q515,180 505,165" stroke="#C49A2A" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <ellipse cx="492" cy="148" rx="14" ry="6" fill="#3D6030" transform="rotate(45 492 148)" opacity="0.85"/>
+      <ellipse cx="478" cy="140" rx="12" ry="5" fill="#3D6030" transform="rotate(30 478 140)" opacity="0.75"/>
+      <ellipse cx="505" cy="160" rx="10" ry="5" fill="#3D6030" transform="rotate(55 505 160)" opacity="0.7"/>
+      <circle cx="464" cy="132" r="8" fill="#7A1C1C"/>
+      <circle cx="464" cy="132" r="4" fill="#C49A2A"/>
+      <circle cx="488" cy="145" r="5" fill="#7A1C1C" opacity="0.8"/>
+
+      <!-- TOP ORNAMENTAL ARCH with gold vine -->
+      <path d="M130,120 Q180,75 280,60 Q380,75 430,120" stroke="#C49A2A" stroke-width="2" fill="none"/>
+      <path d="M140,125 Q190,82 280,68 Q370,82 420,125" stroke="#C49A2A" stroke-width="0.8" fill="none" opacity="0.6"/>
+      <!-- Top floral accents on arch -->
+      <circle cx="280" cy="56" r="7" fill="#7A1C1C"/>
+      <circle cx="280" cy="56" r="3" fill="#C49A2A"/>
+      <ellipse cx="240" cy="68" rx="9" ry="4" fill="#3D6030" transform="rotate(-20 240 68)" opacity="0.8"/>
+      <ellipse cx="320" cy="68" rx="9" ry="4" fill="#3D6030" transform="rotate(20 320 68)" opacity="0.8"/>
+      <circle cx="200" cy="85" r="5" fill="#7A1C1C" opacity="0.7"/>
+      <circle cx="360" cy="85" r="5" fill="#7A1C1C" opacity="0.7"/>
+
+      <!-- WORDMARK "ALJIBE" — large Victorian serif caps -->
+      <!-- Shadow layer -->
+      <text x="282" y="152" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="900"
+            fill="#0F2245" text-anchor="middle" letter-spacing="8" opacity="0.5">ALJIBE</text>
+      <!-- Main layer -->
+      <text x="280" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="900"
+            fill="#1B3A6B" text-anchor="middle" letter-spacing="8">ALJIBE</text>
+      <!-- Gold outline effect -->
+      <text x="280" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="82" font-weight="900"
+            fill="none" stroke="#C49A2A" stroke-width="1.5" text-anchor="middle" letter-spacing="8">ALJIBE</text>
+
+      <!-- DIVIDER RULE below wordmark -->
+      <line x1="130" y1="165" x2="430" y2="165" stroke="#C49A2A" stroke-width="1.5"/>
+      <line x1="155" y1="169" x2="405" y2="169" stroke="#C49A2A" stroke-width="0.5" opacity="0.5"/>
+      <!-- Diamond center on rule -->
+      <polygon points="280,162 284,166 280,170 276,166" fill="#7A1C1C"/>
+
+      <!-- ======== THE STONE WELL ======== -->
+      <!-- Well base / stone surround (wider, more like the original) -->
+      <ellipse cx="280" cy="295" rx="52" ry="10" fill="#7A1C1C" opacity="0.3"/>
+      <!-- Well body — brick cylinder -->
+      <rect x="228" y="240" width="104" height="70" rx="4" fill="#9C3E2A"/>
+      <!-- Brick horizontal courses -->
+      <line x1="228" y1="254" x2="332" y2="254" stroke="#7A1C1C" stroke-width="1" opacity="0.5"/>
+      <line x1="228" y1="268" x2="332" y2="268" stroke="#7A1C1C" stroke-width="1" opacity="0.5"/>
+      <line x1="228" y1="282" x2="332" y2="282" stroke="#7A1C1C" stroke-width="1" opacity="0.5"/>
+      <line x1="228" y1="296" x2="332" y2="296" stroke="#7A1C1C" stroke-width="1" opacity="0.5"/>
+      <!-- Brick vertical offsets per course -->
+      <line x1="280" y1="240" x2="280" y2="254" stroke="#7A1C1C" stroke-width="1" opacity="0.4"/>
+      <line x1="254" y1="254" x2="254" y2="268" stroke="#7A1C1C" stroke-width="1" opacity="0.4"/>
+      <line x1="306" y1="254" x2="306" y2="268" stroke="#7A1C1C" stroke-width="1" opacity="0.4"/>
+      <line x1="268" y1="268" x2="268" y2="282" stroke="#7A1C1C" stroke-width="1" opacity="0.4"/>
+      <line x1="293" y1="268" x2="293" y2="282" stroke="#7A1C1C" stroke-width="1" opacity="0.4"/>
+      <!-- Floral decoration on well face -->
+      <circle cx="280" cy="270" r="9" fill="#7A1C1C"/>
+      <circle cx="280" cy="270" r="5" fill="#C49A2A"/>
+      <circle cx="280" cy="270" r="2" fill="#EDE0C4"/>
+      <!-- Well rim / lip -->
+      <rect x="222" y="234" width="116" height="12" rx="2" fill="#7A1C1C" stroke="#C49A2A" stroke-width="1"/>
+      <!-- Well outline -->
+      <rect x="228" y="240" width="104" height="70" rx="4" fill="none" stroke="#2C1810" stroke-width="2"/>
+      <rect x="222" y="234" width="116" height="12" rx="2" fill="none" stroke="#C49A2A" stroke-width="1.5"/>
+
+      <!-- WROUGHT IRON ARCH over the well -->
+      <!-- Left leg -->
+      <path d="M235,235 L235,188" stroke="#4A4035" stroke-width="5" stroke-linecap="round"/>
+      <!-- Right leg -->
+      <path d="M325,235 L325,188" stroke="#4A4035" stroke-width="5" stroke-linecap="round"/>
+      <!-- Arch curve -->
+      <path d="M235,188 Q280,158 325,188" stroke="#4A4035" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- Inner arch detail -->
+      <path d="M241,188 Q280,163 319,188" stroke="#C49A2A" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <!-- Iron leg decorative scrolls -->
+      <path d="M235,220 Q222,210 228,198" stroke="#4A4035" stroke-width="3" fill="none"/>
+      <path d="M325,220 Q338,210 332,198" stroke="#4A4035" stroke-width="3" fill="none"/>
+      <!-- Leg end flourishes -->
+      <circle cx="224" cy="196" r="4" fill="#4A4035" stroke="#C49A2A" stroke-width="1"/>
+      <circle cx="336" cy="196" r="4" fill="#4A4035" stroke="#C49A2A" stroke-width="1"/>
+
+      <!-- PULLEY at arch apex -->
+      <circle cx="280" cy="173" r="10" fill="#4A4035" stroke="#C49A2A" stroke-width="2"/>
+      <circle cx="280" cy="173" r="5" fill="#C49A2A"/>
+      <circle cx="280" cy="173" r="2" fill="#4A4035"/>
+
+      <!-- ROPE from pulley -->
+      <line x1="278" y1="183" x2="274" y2="236" stroke="#9C3E2A" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- BUCKET hanging -->
+      <path d="M265,235 Q268,250 274,252 Q280,254 286,252 Q292,250 295,235 Z" fill="#C49A2A" stroke="#9C3E2A" stroke-width="1.5"/>
+      <!-- Bucket handle -->
+      <path d="M268,236 Q280,228 292,236" stroke="#9C3E2A" stroke-width="2" fill="none"/>
+      <!-- Bucket highlight -->
+      <line x1="272" y1="240" x2="270" y2="250" stroke="#EDE0C4" stroke-width="1" opacity="0.4"/>
+
+      <!-- SMALL FLORAL ACCENTS around the well base -->
+      <circle cx="220" cy="252" r="7" fill="#7A1C1C" opacity="0.8"/>
+      <circle cx="220" cy="252" r="3" fill="#C49A2A" opacity="0.8"/>
+      <circle cx="340" cy="252" r="7" fill="#7A1C1C" opacity="0.8"/>
+      <circle cx="340" cy="252" r="3" fill="#C49A2A" opacity="0.8"/>
+      <!-- Leaf accents beside well -->
+      <ellipse cx="205" cy="244" rx="14" ry="6" fill="#3D6030" transform="rotate(-35 205 244)" opacity="0.85"/>
+      <ellipse cx="210" cy="258" rx="12" ry="5" fill="#3D6030" transform="rotate(-20 210 258)" opacity="0.75"/>
+      <ellipse cx="355" cy="244" rx="14" ry="6" fill="#3D6030" transform="rotate(35 355 244)" opacity="0.85"/>
+      <ellipse cx="350" cy="258" rx="12" ry="5" fill="#3D6030" transform="rotate(20 350 258)" opacity="0.75"/>
+
+      <!-- BOTTOM ORNAMENTAL SCROLLWORK -->
+      <path d="M130,310 Q165,345 210,350 Q255,355 280,345 Q305,355 350,350 Q395,345 430,310" stroke="#C49A2A" stroke-width="2" fill="none"/>
+      <path d="M155,315 Q185,342 220,347 Q255,350 280,342 Q305,350 340,347 Q375,342 405,315" stroke="#C49A2A" stroke-width="0.8" fill="none" opacity="0.5"/>
+      <!-- Bottom flourish scrolls -->
+      <path d="M130,310 Q115,295 125,278" stroke="#C49A2A" stroke-width="2.5" fill="none"/>
+      <path d="M430,310 Q445,295 435,278" stroke="#C49A2A" stroke-width="2.5" fill="none"/>
+      <!-- Bottom florals -->
+      <circle cx="162" cy="345" r="6" fill="#7A1C1C" opacity="0.7"/>
+      <circle cx="398" cy="345" r="6" fill="#7A1C1C" opacity="0.7"/>
+      <ellipse cx="210" cy="354" rx="10" ry="4" fill="#3D6030" transform="rotate(15 210 354)" opacity="0.75"/>
+      <ellipse cx="350" cy="354" rx="10" ry="4" fill="#3D6030" transform="rotate(-15 350 354)" opacity="0.75"/>
+
+      <!-- TAGLINE at bottom inside circle -->
+      <text x="280" y="385" font-family="Georgia, serif" font-size="16" fill="#C49A2A" text-anchor="middle" letter-spacing="5" opacity="0.9">VELAS ARTESANALES</text>
+
+      <!-- Subtle glow overlay -->
+      <ellipse cx="280" cy="210" rx="180" ry="145" fill="url(#coverGlow)"/>
+    </svg>
+  </div>
+
+  <div class="cover-tagline">
+    <h1>Aljibe</h1>
+    <p>Velas Artesanales · Hand-Poured Luxury · Buenos Aires · Miami</p>
+  </div>
+  <div class="ornament-rule" style="max-width:400px;margin:24px auto;">✦</div>
+  <p class="cover-description">
+    A brand born from stone and water — the old cisterns of Buenos Aires courtyards, 
+    where something precious was held and drawn up slowly. Every candle holds the same.
+  </p>
+</section>
+
+
+<!-- ============================================================
+     COLOR PALETTE
+     ============================================================ -->
+<section class="section">
+  <div class="section-label" style="text-align:center;">Extracted directly from the logo</div>
+  <h2 class="section-title">The Color Palette</h2>
+  <p class="section-subtitle">Seven colors. Every one present in the original mark.</p>
+
+  <div class="palette-grid">
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#1B3A6B;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Pozo Navy</span>
+        <span class="swatch-hex">#1B3A6B</span>
+        <span class="swatch-role">Primary — wordmark, headers, borders</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#C49A2A;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Scrollwork Gold</span>
+        <span class="swatch-hex">#C49A2A</span>
+        <span class="swatch-role">Accent — outlines, ornament, luxury details</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#EDE0C4;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Pergamino</span>
+        <span class="swatch-hex">#EDE0C4</span>
+        <span class="swatch-role">Background — aged parchment, label base</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#9C3E2A;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Adobe Brick</span>
+        <span class="swatch-hex">#9C3E2A</span>
+        <span class="swatch-role">Warmth — the well's brick, earthen details</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#7A1C1C;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Flor Carmín</span>
+        <span class="swatch-hex">#7A1C1C</span>
+        <span class="swatch-role">Emphasis — floral accents, vintage punch</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#3D6030;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Hoja Verde</span>
+        <span class="swatch-hex">#3D6030</span>
+        <span class="swatch-role">Organic — leaf details, fresh counterpoint</span>
+      </div>
+    </div>
+
+    <div class="swatch-card">
+      <div class="swatch-color" style="background:#2C1810;"></div>
+      <div class="swatch-info">
+        <span class="swatch-name">Tinta Oscura</span>
+        <span class="swatch-hex">#2C1810</span>
+        <span class="swatch-role">Deep — outlines, body text, weight</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="ornament-rule" style="margin-top:48px;">✦</div>
+
+  <!-- Color combinations -->
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-top:32px;">
+    <div style="background:#1B3A6B; padding:24px; border-radius:4px; text-align:center;">
+      <div style="font-family:'Cinzel Decorative',serif; color:#C49A2A; font-size:20px; margin-bottom:8px;">Aljibe</div>
+      <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:#EDE0C4; text-transform:uppercase;">Navy on Parchment text</div>
+    </div>
+    <div style="background:#EDE0C4; padding:24px; border-radius:4px; text-align:center; border:1px solid #C49A2A;">
+      <div style="font-family:'Cinzel Decorative',serif; color:#1B3A6B; font-size:20px; margin-bottom:8px;">Aljibe</div>
+      <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:#9C3E2A; text-transform:uppercase;">Navy on Parchment bg</div>
+    </div>
+    <div style="background:#9C3E2A; padding:24px; border-radius:4px; text-align:center;">
+      <div style="font-family:'Cinzel Decorative',serif; color:#EDE0C4; font-size:20px; margin-bottom:8px;">Aljibe</div>
+      <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:#C49A2A; text-transform:uppercase;">Cream on Adobe</div>
+    </div>
+    <div style="background:#2C1810; padding:24px; border-radius:4px; text-align:center;">
+      <div style="font-family:'Cinzel Decorative',serif; color:#C49A2A; font-size:20px; margin-bottom:8px;">Aljibe</div>
+      <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:#EDE0C4; text-transform:uppercase;">Gold on Ink</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TYPOGRAPHY
+     ============================================================ -->
+<section style="background:var(--parchment); padding:80px 40px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label" style="text-align:center;">Vintage. Ornate. Readable.</div>
+    <h2 class="section-title">Typography</h2>
+    <p class="section-subtitle">Three voices — each with a specific job.</p>
+
+    <div class="type-showcase">
+
+      <div class="type-card" style="border-color:var(--navy);">
+        <div class="type-card-label">Display — Cinzel Decorative</div>
+        <div class="type-display-sample">Aljibe</div>
+        <div style="font-family:'Cinzel Decorative',serif; font-size:16px; color:var(--navy); letter-spacing:3px; margin-bottom:8px;">VELAS ARTESANALES</div>
+        <div class="type-meta">Used for: wordmark, section titles, packaging headers</div>
+        <div style="margin-top:16px; padding-top:16px; border-top:1px solid rgba(196,154,42,0.3);">
+          <div style="font-family:'Cinzel Decorative',serif; color:var(--navy); font-size:18px; font-weight:700; margin-bottom:4px;">Bold Weight</div>
+          <div style="font-family:'Cinzel Decorative',serif; color:var(--navy); font-size:18px; font-weight:900;">Black Weight</div>
+        </div>
+      </div>
+
+      <div class="type-card">
+        <div class="type-card-label">Serif — Playfair Display</div>
+        <div class="type-serif-sample">Hand-poured in Miami,<br><em>rooted in Buenos Aires.</em></div>
+        <div style="font-family:'Playfair Display',serif; font-size:14px; color:var(--ink); opacity:0.7; margin-bottom:8px;">Playfair Display Regular · Italic</div>
+        <div class="type-meta">Used for: scent names, pull quotes, subheadings</div>
+        <div style="margin-top:16px; padding-top:16px; border-top:1px solid rgba(196,154,42,0.3);">
+          <div style="font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:var(--ink); margin-bottom:4px;">Semibold — Jasmine & Leche</div>
+          <div style="font-family:'Playfair Display',serif; font-size:16px; font-weight:800; color:var(--ink);">Black — <em>Patio de Luz</em></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="type-card" style="margin-top:24px;">
+      <div class="type-card-label">Body — Lora (or Georgia fallback)</div>
+      <div class="type-body-sample" style="max-width:680px;">
+        Each candle begins with soy wax and ends with something harder to name — 
+        the feeling of an afternoon patio, rain on stone, jasmine through a colonial 
+        doorway. We pour slowly. We pour with memory. These are not mass-produced 
+        objects. They are small acts of preservation.
+      </div>
+      <div class="type-meta" style="margin-top:12px;">Used for: product descriptions, about text, captions, emails</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DIVIDER — brand story
+     ============================================================ -->
+<div class="divider-section">
+  <div class="ornament-rule" style="max-width:400px; margin:0 auto 24px; color:rgba(196,154,42,0.4);">✦</div>
+  <h2>"El agua sube despacio del pozo."</h2>
+  <p>Water rises slowly from the well. Good things always do.</p>
+  <div class="ornament-rule" style="max-width:400px; margin:24px auto 0; color:rgba(196,154,42,0.4);">✦</div>
+</div>
+
+
+<!-- ============================================================
+     LOGO VARIATIONS — SVG
+     ============================================================ -->
+<section class="section">
+  <div class="section-label" style="text-align:center;">Built from the logo's visual language</div>
+  <h2 class="section-title">Logo System</h2>
+  <p class="section-subtitle">Variations for every surface — all derived from the original mark.</p>
+
+  <div class="logo-grid">
+
+    <!-- Variation 1: Primary on Parchment -->
+    <div class="logo-variant" style="border:1px solid rgba(196,154,42,0.3);">
+      <div class="logo-canvas" style="background:var(--parchment);">
+        <svg class="logo-svg" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Circular ornate frame -->
+          <circle cx="110" cy="80" r="72" fill="none" stroke="#1B3A6B" stroke-width="5"/>
+          <circle cx="110" cy="80" r="65" fill="none" stroke="#C49A2A" stroke-width="1.5"/>
+          <!-- Gold scrollwork arcs -->
+          <path d="M50,80 Q40,50 70,40" stroke="#C49A2A" stroke-width="2" fill="none"/>
+          <path d="M170,80 Q180,50 150,40" stroke="#C49A2A" stroke-width="2" fill="none"/>
+          <!-- Wordmark arc (simulated) -->
+          <text font-family="'Cinzel Decorative',serif" font-size="22" font-weight="700" fill="#1B3A6B" text-anchor="middle">
+            <textPath href="#arc-top" startOffset="50%">ALJIBE</textPath>
+          </text>
+          <defs>
+            <path id="arc-top" d="M 50,80 A 60,60 0 0,1 170,80"/>
+          </defs>
+          <!-- Well structure -->
+          <!-- Well base -->
+          <rect x="88" y="108" width="44" height="28" rx="2" fill="#9C3E2A" stroke="#2C1810" stroke-width="1.5"/>
+          <!-- Brick lines -->
+          <line x1="88" y1="116" x2="132" y2="116" stroke="#2C1810" stroke-width="0.5" opacity="0.5"/>
+          <line x1="88" y1="124" x2="132" y2="124" stroke="#2C1810" stroke-width="0.5" opacity="0.5"/>
+          <line x1="110" y1="108" x2="110" y2="136" stroke="#2C1810" stroke-width="0.5" opacity="0.5"/>
+          <!-- Floral accent on well -->
+          <circle cx="110" cy="122" r="4" fill="#7A1C1C" opacity="0.7"/>
+          <!-- Iron arch -->
+          <path d="M88,108 L88,88 Q110,75 132,88 L132,108" fill="none" stroke="#4A4035" stroke-width="3"/>
+          <!-- Pulley at top -->
+          <circle cx="110" cy="80" r="5" fill="#4A4035" stroke="#C49A2A" stroke-width="1"/>
+          <!-- Rope + bucket -->
+          <line x1="110" y1="85" x2="110" y2="108" stroke="#9C3E2A" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <!-- Gold accent diamond above arch -->
+          <polygon points="110,68 113,72 110,76 107,72" fill="#7A1C1C"/>
+          <!-- Small floral details -->
+          <circle cx="85" cy="95" r="3" fill="#7A1C1C" opacity="0.6"/>
+          <circle cx="135" cy="95" r="3" fill="#7A1C1C" opacity="0.6"/>
+          <!-- Leaf accents -->
+          <ellipse cx="78" cy="88" rx="6" ry="3" fill="#3D6030" transform="rotate(-30 78 88)" opacity="0.7"/>
+          <ellipse cx="142" cy="88" rx="6" ry="3" fill="#3D6030" transform="rotate(30 142 88)" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="logo-caption">
+        <span class="logo-caption-name">Badge Mark — Parchment</span>
+        <span class="logo-caption-use">Profile images, wax seals, packaging stamps</span>
+      </div>
+    </div>
+
+    <!-- Variation 2: Navy background -->
+    <div class="logo-variant">
+      <div class="logo-canvas" style="background:#1B3A6B;">
+        <svg class="logo-svg" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="110" cy="80" r="72" fill="none" stroke="#C49A2A" stroke-width="5"/>
+          <circle cx="110" cy="80" r="65" fill="none" stroke="#EDE0C4" stroke-width="1"/>
+          <path d="M50,80 Q40,50 70,40" stroke="#C49A2A" stroke-width="2" fill="none"/>
+          <path d="M170,80 Q180,50 150,40" stroke="#C49A2A" stroke-width="2" fill="none"/>
+          <text font-family="'Cinzel Decorative',serif" font-size="22" font-weight="700" fill="#C49A2A" text-anchor="middle">
+            <textPath href="#arc-top-2" startOffset="50%">ALJIBE</textPath>
+          </text>
+          <defs>
+            <path id="arc-top-2" d="M 50,80 A 60,60 0 0,1 170,80"/>
+          </defs>
+          <rect x="88" y="108" width="44" height="28" rx="2" fill="#9C3E2A" stroke="#C49A2A" stroke-width="1"/>
+          <line x1="88" y1="116" x2="132" y2="116" stroke="#C49A2A" stroke-width="0.5" opacity="0.4"/>
+          <line x1="88" y1="124" x2="132" y2="124" stroke="#C49A2A" stroke-width="0.5" opacity="0.4"/>
+          <circle cx="110" cy="122" r="4" fill="#7A1C1C"/>
+          <path d="M88,108 L88,88 Q110,75 132,88 L132,108" fill="none" stroke="#C49A2A" stroke-width="3"/>
+          <circle cx="110" cy="80" r="5" fill="#EDE0C4" stroke="#C49A2A" stroke-width="1"/>
+          <line x1="110" y1="85" x2="110" y2="108" stroke="#C49A2A" stroke-width="1.5" stroke-dasharray="2 2"/>
+          <polygon points="110,68 113,72 110,76 107,72" fill="#7A1C1C"/>
+          <circle cx="85" cy="95" r="3" fill="#7A1C1C" opacity="0.8"/>
+          <circle cx="135" cy="95" r="3" fill="#7A1C1C" opacity="0.8"/>
+          <ellipse cx="78" cy="88" rx="6" ry="3" fill="#3D6030" transform="rotate(-30 78 88)" opacity="0.8"/>
+          <ellipse cx="142" cy="88" rx="6" ry="3" fill="#3D6030" transform="rotate(30 142 88)" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="logo-caption">
+        <span class="logo-caption-name">Badge Mark — Navy</span>
+        <span class="logo-caption-use">Dark backgrounds, TikTok/IG dark banners</span>
+      </div>
+    </div>
+
+    <!-- Variation 3: Horizontal wordmark -->
+    <div class="logo-variant" style="border:1px solid rgba(196,154,42,0.3);">
+      <div class="logo-canvas" style="background:var(--cream);">
+        <svg class="logo-svg" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg">
+          <!-- Small well icon -->
+          <rect x="10" y="44" width="28" height="22" rx="2" fill="#9C3E2A" stroke="#2C1810" stroke-width="1.2"/>
+          <path d="M10,44 L10,30 Q24,22 38,30 L38,44" fill="none" stroke="#4A4035" stroke-width="2.5"/>
+          <circle cx="24" cy="25" r="4" fill="#4A4035" stroke="#C49A2A" stroke-width="0.8"/>
+          <!-- Divider rule -->
+          <line x1="52" y1="15" x2="52" y2="65" stroke="#C49A2A" stroke-width="1"/>
+          <!-- Wordmark -->
+          <text x="64" y="44" font-family="'Cinzel Decorative',serif" font-size="28" font-weight="700" fill="#1B3A6B">ALJIBE</text>
+          <!-- Sub tagline -->
+          <text x="64" y="60" font-family="'Cinzel',serif" font-size="9" letter-spacing="3" fill="#9C3E2A" text-transform="uppercase">VELAS ARTESANALES</text>
+          <!-- Top rule -->
+          <line x1="64" y1="20" x2="215" y2="20" stroke="#C49A2A" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="logo-caption">
+        <span class="logo-caption-name">Horizontal Lockup</span>
+        <span class="logo-caption-use">Email headers, website nav, stickers</span>
+      </div>
+    </div>
+
+    <!-- Variation 4: Brick background label -->
+    <div class="logo-variant">
+      <div class="logo-canvas" style="background:#9C3E2A;">
+        <svg class="logo-svg" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Border frame -->
+          <rect x="10" y="10" width="200" height="140" fill="none" stroke="#C49A2A" stroke-width="2"/>
+          <rect x="16" y="16" width="188" height="128" fill="none" stroke="#EDE0C4" stroke-width="0.5"/>
+          <!-- Corner ornaments -->
+          <text x="14" y="26" font-size="14" fill="#C49A2A">✦</text>
+          <text x="196" y="26" font-size="14" fill="#C49A2A" text-anchor="end">✦</text>
+          <text x="14" y="148" font-size="14" fill="#C49A2A">✦</text>
+          <text x="196" y="148" font-size="14" fill="#C49A2A" text-anchor="end">✦</text>
+          <!-- Small well -->
+          <rect x="96" y="68" width="28" height="20" rx="1" fill="#EDE0C4" stroke="#C49A2A" stroke-width="1"/>
+          <path d="M96,68 L96,56 Q110,49 124,56 L124,68" fill="none" stroke="#C49A2A" stroke-width="2"/>
+          <!-- Wordmark -->
+          <text x="110" y="46" font-family="'Cinzel Decorative',serif" font-size="20" font-weight="700" fill="#EDE0C4" text-anchor="middle">ALJIBE</text>
+          <!-- Rule -->
+          <line x1="40" y1="100" x2="180" y2="100" stroke="#C49A2A" stroke-width="0.8"/>
+          <!-- Sub text -->
+          <text x="110" y="115" font-family="'Cinzel',serif" font-size="8" letter-spacing="3" fill="#EDE0C4" text-anchor="middle">VELAS ARTESANALES</text>
+          <text x="110" y="128" font-family="'Lora',serif" font-size="8" fill="#C49A2A" text-anchor="middle" font-style="italic">Buenos Aires · Miami</text>
+        </svg>
+      </div>
+      <div class="logo-caption">
+        <span class="logo-caption-name">Label Lockup — Brick</span>
+        <span class="logo-caption-use">Candle vessel labels, gift boxes</span>
+      </div>
+    </div>
+
+    <!-- Variation 5: Ink/Tinta Oscura -->
+    <div class="logo-variant">
+      <div class="logo-canvas" style="background:#2C1810;">
+        <svg class="logo-svg" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="110" cy="80" r="70" fill="none" stroke="#C49A2A" stroke-width="3"/>
+          <circle cx="110" cy="80" r="62" fill="none" stroke="#9C3E2A" stroke-width="1"/>
+          <!-- Decorative flourishes -->
+          <path d="M55,80 Q45,55 75,45 Q85,52 78,60" stroke="#C49A2A" stroke-width="1.5" fill="none"/>
+          <path d="M165,80 Q175,55 145,45 Q135,52 142,60" stroke="#C49A2A" stroke-width="1.5" fill="none"/>
+          <text font-family="'Cinzel Decorative',serif" font-size="20" font-weight="900" fill="#C49A2A" text-anchor="middle">
+            <textPath href="#arc-top-5" startOffset="50%">ALJIBE</textPath>
+          </text>
+          <defs>
+            <path id="arc-top-5" d="M 52,80 A 58,58 0 0,1 168,80"/>
+          </defs>
+          <rect x="90" y="106" width="40" height="26" rx="2" fill="#9C3E2A" stroke="#C49A2A" stroke-width="1"/>
+          <path d="M90,106 L90,89 Q110,78 130,89 L130,106" fill="none" stroke="#C49A2A" stroke-width="2.5"/>
+          <circle cx="110" cy="82" r="4" fill="#C49A2A" stroke="#EDE0C4" stroke-width="0.5"/>
+          <line x1="110" y1="86" x2="110" y2="106" stroke="#C49A2A" stroke-width="1.2" stroke-dasharray="2 2"/>
+          <polygon points="110,70 113,74 110,78 107,74" fill="#7A1C1C"/>
+          <ellipse cx="80" cy="90" rx="7" ry="3" fill="#3D6030" transform="rotate(-25 80 90)" opacity="0.8"/>
+          <ellipse cx="140" cy="90" rx="7" ry="3" fill="#3D6030" transform="rotate(25 140 90)" opacity="0.8"/>
+          <!-- Tagline bottom -->
+          <text x="110" y="148" font-family="'Cinzel',serif" font-size="7" letter-spacing="3" fill="#C49A2A" text-anchor="middle">HAND-POURED · ARTISANAL</text>
+        </svg>
+      </div>
+      <div class="logo-caption">
+        <span class="logo-caption-name">Premium Dark — Tinta Oscura</span>
+        <span class="logo-caption-use">Gift packaging, luxury tier, holiday editions</span>
+      </div>
+    </div>
+
+    <!-- Variation 6: Icon only (small) -->
+    <div class="logo-variant" style="border:1px solid rgba(196,154,42,0.3);">
+      <div class="logo-canvas" style="background:var(--parchment); flex-direction:column; gap:16px;">
+        <!-- 3 sizes of icon -->
+        <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#1B3A6B" stroke-width="3"/>
+          <circle cx="40" cy="40" r="33" fill="none" stroke="#C49A2A" stroke-width="1"/>
+          <rect x="24" y="52" width="32" height="18" rx="1" fill="#9C3E2A" stroke="#2C1810" stroke-width="1"/>
+          <path d="M24,52 L24,40 Q40,32 56,40 L56,52" fill="none" stroke="#4A4035" stroke-width="2"/>
+          <circle cx="40" cy="34" r="4" fill="#4A4035" stroke="#C49A2A" stroke-width="0.8"/>
+          <polygon points="40,24 43,28 40,32 37,28" fill="#7A1C1C"/>
+        </svg>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <svg width="48" height="48" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="#1B3A6B" stroke-width="3"/>
+            <circle cx="40" cy="40" r="33" fill="none" stroke="#C49A2A" stroke-width="1"/>
+            <rect x="24" y="52" width="32" height="18" rx="1" fill="#9C3E2A" stroke="#2C1810" stroke-width="1"/>
+            <path d="M24,52 L24,40 Q40,32 56,40 L56,52" fill="none" stroke="#4A4035" stroke-width="2"/>
+            <circle cx="40" cy="34" r="4" fill="#4A4035" stroke="#C49A2A" stroke-width="0.8"/>
+            <polygon points="40,24 43,28 40,32 37,28" fill="#7A1C1C"/>
+          </svg>
+          <svg width="32" height="32" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="#1B3A6B" stroke-width="4"/>
+            <rect x="24" y="52" width="32" height="18" rx="1" fill="#9C3E2A"/>
+            <path d="M24,52 L24,40 Q40,32 56,40 L56,52" fill="none" stroke="#4A4035" stroke-width="3"/>
+            <circle cx="40" cy="36" r="4" fill="#C49A2A"/>
+          </svg>
+        </div>
+        <div style="font-family:'Cinzel',serif; font-size:10px; letter-spacing:1px; color:var(--gold-dk); text-align:center;">80px · 48px · 32px</div>
+      </div>
+      <div class="logo-caption">
+        <span class="logo-caption-name">Icon Mark — 3 Sizes</span>
+        <span class="logo-caption-use">Favicon, app icon, small social badge</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SOCIAL MEDIA PROFILE IMAGES
+     ============================================================ -->
+<section style="background:var(--parchment); padding:80px 40px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label" style="text-align:center;">TikTok · Instagram · WhatsApp Business</div>
+    <h2 class="section-title">Profile Images</h2>
+    <p class="section-subtitle">Four options — choose by platform and mood.</p>
+
+    <div class="profile-grid">
+
+      <!-- TikTok Main -->
+      <div class="profile-card">
+        <div class="profile-platform">TikTok · @aljibeshop</div>
+        <div class="profile-image-wrap">
+          <div class="profile-img-circle" style="width:200px; height:200px;">
+            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#1B3A6B"/>
+              <!-- radial gold glow -->
+              <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#C49A2A" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#1B3A6B" stop-opacity="0"/>
+              </radialGradient>
+              <circle cx="100" cy="100" r="100" fill="url(#glow1)"/>
+              <!-- Ornate ring -->
+              <circle cx="100" cy="100" r="88" fill="none" stroke="#C49A2A" stroke-width="3"/>
+              <circle cx="100" cy="100" r="80" fill="none" stroke="#EDE0C4" stroke-width="0.8"/>
+              <!-- Wordmark -->
+              <text x="100" y="60" font-family="'Cinzel Decorative',serif" font-size="28" font-weight="700" fill="#C49A2A" text-anchor="middle">ALJIBE</text>
+              <!-- Gold rule -->
+              <line x1="30" y1="70" x2="170" y2="70" stroke="#C49A2A" stroke-width="0.8" opacity="0.6"/>
+              <!-- Well icon centered -->
+              <rect x="76" y="110" width="48" height="34" rx="2" fill="#9C3E2A" stroke="#C49A2A" stroke-width="1.2"/>
+              <line x1="76" y1="120" x2="124" y2="120" stroke="#C49A2A" stroke-width="0.5" opacity="0.4"/>
+              <line x1="76" y1="130" x2="124" y2="130" stroke="#C49A2A" stroke-width="0.5" opacity="0.4"/>
+              <circle cx="100" cy="122" r="5" fill="#7A1C1C"/>
+              <path d="M76,110 L76,92 Q100,80 124,92 L124,110" fill="none" stroke="#C49A2A" stroke-width="3"/>
+              <circle cx="100" cy="84" r="6" fill="#4A4035" stroke="#C49A2A" stroke-width="1.5"/>
+              <line x1="100" y1="90" x2="100" y2="110" stroke="#C49A2A" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <polygon points="100,72 103,77 100,82 97,77" fill="#7A1C1C"/>
+              <!-- Floral accents -->
+              <circle cx="68" cy="100" r="4" fill="#7A1C1C" opacity="0.7"/>
+              <circle cx="132" cy="100" r="4" fill="#7A1C1C" opacity="0.7"/>
+              <ellipse cx="60" cy="92" rx="8" ry="4" fill="#3D6030" transform="rotate(-30 60 92)" opacity="0.8"/>
+              <ellipse cx="140" cy="92" rx="8" ry="4" fill="#3D6030" transform="rotate(30 140 92)" opacity="0.8"/>
+              <!-- Sub tagline -->
+              <text x="100" y="162" font-family="'Cinzel',serif" font-size="10" letter-spacing="2" fill="#EDE0C4" text-anchor="middle" opacity="0.8">VELAS ARTESANALES</text>
+              <!-- Scrollwork -->
+              <path d="M30,100 Q18,85 30,75" stroke="#C49A2A" stroke-width="1.5" fill="none" opacity="0.6"/>
+              <path d="M170,100 Q182,85 170,75" stroke="#C49A2A" stroke-width="1.5" fill="none" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-specs">200×200px circular crop<br>Navy — primary TikTok version</div>
+      </div>
+
+      <!-- Instagram Main -->
+      <div class="profile-card">
+        <div class="profile-platform">Instagram · @aljibeshop</div>
+        <div class="profile-image-wrap">
+          <div class="profile-img-circle" style="width:200px; height:200px;">
+            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#EDE0C4"/>
+              <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F7F0E0" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#D9C9A3" stop-opacity="1"/>
+              </radialGradient>
+              <circle cx="100" cy="100" r="100" fill="url(#glow2)"/>
+              <circle cx="100" cy="100" r="88" fill="none" stroke="#1B3A6B" stroke-width="3"/>
+              <circle cx="100" cy="100" r="82" fill="none" stroke="#C49A2A" stroke-width="1"/>
+              <text x="100" y="60" font-family="'Cinzel Decorative',serif" font-size="26" font-weight="700" fill="#1B3A6B" text-anchor="middle">ALJIBE</text>
+              <line x1="35" y1="70" x2="165" y2="70" stroke="#C49A2A" stroke-width="0.8" opacity="0.7"/>
+              <rect x="76" y="110" width="48" height="34" rx="2" fill="#9C3E2A" stroke="#2C1810" stroke-width="1.2"/>
+              <line x1="76" y1="120" x2="124" y2="120" stroke="#2C1810" stroke-width="0.5" opacity="0.3"/>
+              <line x1="76" y1="130" x2="124" y2="130" stroke="#2C1810" stroke-width="0.5" opacity="0.3"/>
+              <circle cx="100" cy="122" r="5" fill="#7A1C1C"/>
+              <path d="M76,110 L76,92 Q100,80 124,92 L124,110" fill="none" stroke="#4A4035" stroke-width="3"/>
+              <circle cx="100" cy="84" r="6" fill="#4A4035" stroke="#C49A2A" stroke-width="1.5"/>
+              <line x1="100" y1="90" x2="100" y2="110" stroke="#9C3E2A" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <polygon points="100,72 103,77 100,82 97,77" fill="#7A1C1C"/>
+              <circle cx="68" cy="100" r="4" fill="#7A1C1C" opacity="0.7"/>
+              <circle cx="132" cy="100" r="4" fill="#7A1C1C" opacity="0.7"/>
+              <ellipse cx="60" cy="92" rx="8" ry="4" fill="#3D6030" transform="rotate(-30 60 92)" opacity="0.8"/>
+              <ellipse cx="140" cy="92" rx="8" ry="4" fill="#3D6030" transform="rotate(30 140 92)" opacity="0.8"/>
+              <text x="100" y="162" font-family="'Cinzel',serif" font-size="9" letter-spacing="2" fill="#9C3E2A" text-anchor="middle">BUENOS AIRES · MIAMI</text>
+              <path d="M30,100 Q18,85 30,75" stroke="#C49A2A" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <path d="M170,100 Q182,85 170,75" stroke="#C49A2A" stroke-width="1.5" fill="none" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-specs">200×200px circular crop<br>Parchment — warm Instagram version</div>
+      </div>
+
+      <!-- WhatsApp Business -->
+      <div class="profile-card">
+        <div class="profile-platform">WhatsApp Business · Brick Edition</div>
+        <div class="profile-image-wrap">
+          <div class="profile-img-circle" style="width:200px; height:200px;">
+            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="200" fill="#9C3E2A"/>
+              <circle cx="100" cy="100" r="88" fill="none" stroke="#EDE0C4" stroke-width="2"/>
+              <circle cx="100" cy="100" r="82" fill="none" stroke="#C49A2A" stroke-width="1"/>
+              <text x="100" y="60" font-family="'Cinzel Decorative',serif" font-size="26" font-weight="700" fill="#EDE0C4" text-anchor="middle">ALJIBE</text>
+              <line x1="35" y1="70" x2="165" y2="70" stroke="#EDE0C4" stroke-width="0.6" opacity="0.6"/>
+              <rect x="76" y="110" width="48" height="34" rx="2" fill="#7A1C1C" stroke="#EDE0C4" stroke-width="1"/>
+              <circle cx="100" cy="122" r="5" fill="#EDE0C4" opacity="0.7"/>
+              <path d="M76,110 L76,92 Q100,80 124,92 L124,110" fill="none" stroke="#EDE0C4" stroke-width="2.5"/>
+              <circle cx="100" cy="84" r="6" fill="#EDE0C4" stroke="#C49A2A" stroke-width="1"/>
+              <polygon points="100,72 103,77 100,82 97,77" fill="#C49A2A"/>
+              <circle cx="68" cy="100" r="4" fill="#EDE0C4" opacity="0.6"/>
+              <circle cx="132" cy="100" r="4" fill="#EDE0C4" opacity="0.6"/>
+              <text x="100" y="162" font-family="'Cinzel',serif" font-size="9" letter-spacing="2" fill="#EDE0C4" text-anchor="middle" opacity="0.8">VELAS ARTESANALES</text>
+            </svg>
+          </div>
+        </div>
+        <div class="profile-specs">200×200px circular crop<br>Brick — warm accent version</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TIKTOK BANNER
+     ============================================================ -->
+<section class="section">
+  <div class="section-label" style="text-align:center;">TikTok profile header · 1500×500px</div>
+  <h2 class="section-title">TikTok Banner</h2>
+  <p class="section-subtitle">The first thing someone sees when they land on @aljibeshop.</p>
+
+  <!-- Banner concept 1: Navy -->
+  <div class="banner-card" style="margin-bottom:32px;">
+    <svg width="100%" viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+      <defs>
+        <radialGradient id="bgGrad" cx="30%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="#0F2245"/>
+          <stop offset="100%" stop-color="#1B3A6B"/>
+        </radialGradient>
+        <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#C49A2A" stop-opacity="0"/>
+          <stop offset="20%" stop-color="#C49A2A" stop-opacity="1"/>
+          <stop offset="80%" stop-color="#C49A2A" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#C49A2A" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1500" height="500" fill="url(#bgGrad)"/>
+      <!-- Scattered noise pattern for texture -->
+      <!-- Top rule -->
+      <line x1="0" y1="30" x2="1500" y2="30" stroke="url(#goldLine)" stroke-width="1"/>
+      <line x1="0" y1="470" x2="1500" y2="470" stroke="url(#goldLine)" stroke-width="1"/>
+      <!-- LEFT: Ornate badge -->
+      <circle cx="300" cy="250" r="180" fill="none" stroke="#C49A2A" stroke-width="6"/>
+      <circle cx="300" cy="250" r="166" fill="none" stroke="#EDE0C4" stroke-width="1"/>
+      <!-- Well in badge -->
+      <rect x="258" y="290" width="84" height="56" rx="3" fill="#9C3E2A" stroke="#C49A2A" stroke-width="2"/>
+      <line x1="258" y1="308" x2="342" y2="308" stroke="#EDE0C4" stroke-width="1" opacity="0.4"/>
+      <line x1="258" y1="326" x2="342" y2="326" stroke="#EDE0C4" stroke-width="1" opacity="0.4"/>
+      <circle cx="300" cy="314" r="8" fill="#7A1C1C"/>
+      <path d="M258,290 L258,256 Q300,232 342,256 L342,290" fill="none" stroke="#C49A2A" stroke-width="5"/>
+      <circle cx="300" cy="240" r="12" fill="#4A4035" stroke="#C49A2A" stroke-width="3"/>
+      <line x1="300" y1="252" x2="300" y2="290" stroke="#C49A2A" stroke-width="2.5" stroke-dasharray="5 5"/>
+      <polygon points="300,214 306,225 300,236 294,225" fill="#7A1C1C"/>
+      <!-- Floral -->
+      <circle cx="242" cy="270" r="8" fill="#7A1C1C" opacity="0.7"/>
+      <circle cx="358" cy="270" r="8" fill="#7A1C1C" opacity="0.7"/>
+      <ellipse cx="224" cy="252" rx="16" ry="7" fill="#3D6030" transform="rotate(-30 224 252)" opacity="0.8"/>
+      <ellipse cx="376" cy="252" rx="16" ry="7" fill="#3D6030" transform="rotate(30 376 252)" opacity="0.8"/>
+      <!-- Scrollwork -->
+      <path d="M150,250 Q120,200 155,160" stroke="#C49A2A" stroke-width="2" fill="none" opacity="0.7"/>
+      <path d="M450,250 Q480,200 445,160" stroke="#C49A2A" stroke-width="2" fill="none" opacity="0.7"/>
+      <!-- Arc text in badge -->
+      <text font-family="Georgia,serif" font-size="32" font-weight="bold" fill="#EDE0C4" text-anchor="middle">
+        <textPath href="#bannerArc" startOffset="50%">✦ ALJIBE ✦</textPath>
+      </text>
+      <defs>
+        <path id="bannerArc" d="M 130,250 A 170,170 0 0,1 470,250"/>
+      </defs>
+      <!-- CENTER: Main text area -->
+      <text x="880" y="200" font-family="Georgia,serif" font-size="90" font-weight="bold" fill="#C49A2A" text-anchor="middle" letter-spacing="12">ALJIBE</text>
+      <line x1="600" y1="225" x2="1160" y2="225" stroke="url(#goldLine)" stroke-width="1"/>
+      <text x="880" y="268" font-family="Georgia,serif" font-size="26" fill="#EDE0C4" text-anchor="middle" letter-spacing="8">VELAS ARTESANALES</text>
+      <text x="880" y="310" font-family="Georgia,serif" font-size="18" fill="#EDE0C4" text-anchor="middle" letter-spacing="4" opacity="0.65">Hand-poured · Buenos Aires · Miami</text>
+      <line x1="600" y1="335" x2="1160" y2="335" stroke="url(#goldLine)" stroke-width="1"/>
+      <!-- Corner ornaments -->
+      <text x="80" y="80" font-size="40" fill="#C49A2A" opacity="0.3">✦</text>
+      <text x="1380" y="80" font-size="40" fill="#C49A2A" opacity="0.3" text-anchor="middle">✦</text>
+      <text x="80" y="460" font-size="40" fill="#C49A2A" opacity="0.3">✦</text>
+      <text x="1380" y="460" font-size="40" fill="#C49A2A" opacity="0.3" text-anchor="middle">✦</text>
+      <!-- Handle text -->
+      <text x="880" y="390" font-family="Georgia,serif" font-size="22" fill="#C49A2A" text-anchor="middle" opacity="0.8">@aljibeshop</text>
+    </svg>
+    <div class="banner-label">Banner Option A — Navy Royal · TikTok 1500×500px</div>
+  </div>
+
+  <!-- Banner concept 2: Parchment -->
+  <div class="banner-card">
+    <svg width="100%" viewBox="0 0 1500 500" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+      <defs>
+        <radialGradient id="parchGrad" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="#F7F0E0"/>
+          <stop offset="100%" stop-color="#D9C9A3"/>
+        </radialGradient>
+        <linearGradient id="navyLine" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#1B3A6B" stop-opacity="0"/>
+          <stop offset="20%" stop-color="#1B3A6B" stop-opacity="1"/>
+          <stop offset="80%" stop-color="#1B3A6B" stop-opacity="1"/>
+          <stop offset="100%" stop-color="#1B3A6B" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1500" height="500" fill="url(#parchGrad)"/>
+      <!-- Corner aging stains -->
+      <circle cx="0" cy="0" r="200" fill="#9C3E2A" opacity="0.06"/>
+      <circle cx="1500" cy="0" r="200" fill="#C49A2A" opacity="0.06"/>
+      <circle cx="0" cy="500" r="200" fill="#C49A2A" opacity="0.05"/>
+      <circle cx="1500" cy="500" r="200" fill="#9C3E2A" opacity="0.05"/>
+      <!-- Rules -->
+      <line x1="0" y1="28" x2="1500" y2="28" stroke="#1B3A6B" stroke-width="3"/>
+      <line x1="0" y1="38" x2="1500" y2="38" stroke="#C49A2A" stroke-width="0.8"/>
+      <line x1="0" y1="462" x2="1500" y2="462" stroke="#1B3A6B" stroke-width="3"/>
+      <line x1="0" y1="472" x2="1500" y2="472" stroke="#C49A2A" stroke-width="0.8"/>
+      <!-- Badge left -->
+      <circle cx="280" cy="250" r="170" fill="none" stroke="#1B3A6B" stroke-width="5"/>
+      <circle cx="280" cy="250" r="158" fill="none" stroke="#C49A2A" stroke-width="1.5"/>
+      <text font-family="Georgia,serif" font-size="30" font-weight="bold" fill="#1B3A6B" text-anchor="middle">
+        <textPath href="#bannerArc2" startOffset="50%">✦ ALJIBE ✦</textPath>
+      </text>
+      <defs>
+        <path id="bannerArc2" d="M 118,250 A 162,162 0 0,1 442,250"/>
+      </defs>
+      <rect x="242" y="288" width="76" height="50" rx="2" fill="#9C3E2A" stroke="#2C1810" stroke-width="1.5"/>
+      <line x1="242" y1="304" x2="318" y2="304" stroke="#2C1810" stroke-width="1" opacity="0.3"/>
+      <line x1="242" y1="320" x2="318" y2="320" stroke="#2C1810" stroke-width="1" opacity="0.3"/>
+      <circle cx="280" cy="308" r="8" fill="#7A1C1C"/>
+      <path d="M242,288 L242,256 Q280,236 318,256 L318,288" fill="none" stroke="#4A4035" stroke-width="5"/>
+      <circle cx="280" cy="240" r="11" fill="#4A4035" stroke="#C49A2A" stroke-width="2.5"/>
+      <polygon points="280,218 285,228 280,238 275,228" fill="#7A1C1C"/>
+      <circle cx="226" cy="266" r="7" fill="#7A1C1C" opacity="0.7"/>
+      <circle cx="334" cy="266" r="7" fill="#7A1C1C" opacity="0.7"/>
+      <ellipse cx="210" cy="250" rx="14" ry="6" fill="#3D6030" transform="rotate(-30 210 250)" opacity="0.75"/>
+      <ellipse cx="350" cy="250" rx="14" ry="6" fill="#3D6030" transform="rotate(30 350 250)" opacity="0.75"/>
+      <!-- Main text -->
+      <text x="900" y="205" font-family="Georgia,serif" font-size="84" font-weight="bold" fill="#1B3A6B" text-anchor="middle" letter-spacing="10">ALJIBE</text>
+      <line x1="620" y1="228" x2="1180" y2="228" stroke="url(#navyLine)" stroke-width="1"/>
+      <text x="900" y="268" font-family="Georgia,serif" font-size="24" fill="#9C3E2A" text-anchor="middle" letter-spacing="8">VELAS ARTESANALES</text>
+      <text x="900" y="306" font-family="Georgia,serif" font-size="16" fill="#2C1810" text-anchor="middle" letter-spacing="4" opacity="0.6" font-style="italic">Hand-poured · Buenos Aires · Miami</text>
+      <line x1="620" y1="328" x2="1180" y2="328" stroke="url(#navyLine)" stroke-width="1"/>
+      <text x="900" y="385" font-family="Georgia,serif" font-size="20" fill="#C49A2A" text-anchor="middle">@aljibeshop</text>
+      <!-- Corner ornaments -->
+      <text x="70" y="75" font-size="36" fill="#1B3A6B" opacity="0.2">✦</text>
+      <text x="1390" y="75" font-size="36" fill="#1B3A6B" opacity="0.2" text-anchor="end">✦</text>
+    </svg>
+    <div class="banner-label">Banner Option B — Pergamino · TikTok 1500×500px</div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PACKAGING LABELS
+     ============================================================ -->
+<section style="background:var(--parchment); padding:80px 40px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label" style="text-align:center;">Vessel labels · Gift tags · Jar wraps</div>
+    <h2 class="section-title">Packaging Labels</h2>
+    <p class="section-subtitle">Vintage cartel aesthetic — every candle a small artifact.</p>
+
+    <div class="label-grid">
+
+      <div class="candle-label">
+        <div class="label-top-rule">✦</div>
+        <div class="label-brand">Aljibe</div>
+        <div class="label-tagline">Velas Artesanales · Hand-poured</div>
+        <!-- Mini well icon -->
+        <svg width="48" height="48" viewBox="0 0 80 80" style="margin:8px auto 16px;" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#1B3A6B" stroke-width="3"/>
+          <rect x="24" y="52" width="32" height="18" rx="1" fill="#9C3E2A" stroke="#2C1810" stroke-width="1"/>
+          <path d="M24,52 L24,40 Q40,32 56,40 L56,52" fill="none" stroke="#4A4035" stroke-width="2"/>
+          <circle cx="40" cy="34" r="4" fill="#4A4035" stroke="#C49A2A" stroke-width="0.8"/>
+          <polygon points="40,24 43,28 40,32 37,28" fill="#7A1C1C"/>
+        </svg>
+        <div class="label-scent-name">Jazmín del Patio</div>
+        <div class="label-scent-notes">Jasmine · White musk · Warm wood</div>
+        <div class="label-top-rule" style="margin-bottom:12px;">✦</div>
+        <div class="label-weight">8 oz · Soy Wax · Hand-poured</div>
+        <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:var(--gold-dk); margin-top:6px;">MordasinLabs LLC · Miami, FL</div>
+      </div>
+
+      <div class="candle-label" style="background:#1B3A6B; border-color:var(--gold);">
+        <div class="label-top-rule" style="color:var(--gold);">✦</div>
+        <div class="label-brand" style="color:var(--gold);">Aljibe</div>
+        <div class="label-tagline" style="color:var(--parchment);">Velas Artesanales · Hand-poured</div>
+        <svg width="48" height="48" viewBox="0 0 80 80" style="margin:8px auto 16px;" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#C49A2A" stroke-width="3"/>
+          <rect x="24" y="52" width="32" height="18" rx="1" fill="#9C3E2A" stroke="#EDE0C4" stroke-width="1"/>
+          <path d="M24,52 L24,40 Q40,32 56,40 L56,52" fill="none" stroke="#C49A2A" stroke-width="2"/>
+          <circle cx="40" cy="34" r="4" fill="#C49A2A" stroke="#EDE0C4" stroke-width="0.8"/>
+          <polygon points="40,24 43,28 40,32 37,28" fill="#7A1C1C"/>
+        </svg>
+        <div class="label-scent-name" style="color:var(--parchment);">Noche Porteña</div>
+        <div class="label-scent-notes" style="color:var(--parchment); opacity:0.7;">Black tea · Leather · Cedar</div>
+        <div class="label-top-rule" style="color:var(--gold); margin-bottom:12px;">✦</div>
+        <div class="label-weight" style="color:var(--gold);">8 oz · Soy Wax · Hand-poured</div>
+        <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:var(--parchment); margin-top:6px; opacity:0.6;">MordasinLabs LLC · Miami, FL</div>
+      </div>
+
+      <div class="candle-label" style="background:#9C3E2A; border-color:var(--parchment);">
+        <div class="label-top-rule" style="color:var(--parchment);">✦</div>
+        <div class="label-brand" style="color:var(--parchment);">Aljibe</div>
+        <div class="label-tagline" style="color:var(--gold);">Edición Navidad · Holiday Edition</div>
+        <svg width="48" height="48" viewBox="0 0 80 80" style="margin:8px auto 16px;" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="40" r="38" fill="none" stroke="#EDE0C4" stroke-width="3"/>
+          <rect x="24" y="52" width="32" height="18" rx="1" fill="#7A1C1C" stroke="#EDE0C4" stroke-width="1"/>
+          <path d="M24,52 L24,40 Q40,32 56,40 L56,52" fill="none" stroke="#EDE0C4" stroke-width="2"/>
+          <circle cx="40" cy="34" r="4" fill="#EDE0C4"/>
+          <polygon points="40,24 43,28 40,32 37,28" fill="#C49A2A"/>
+        </svg>
+        <div class="label-scent-name" style="color:var(--parchment);">Dulce de Leche & Vainilla</div>
+        <div class="label-scent-notes" style="color:var(--parchment); opacity:0.75;">Caramel · Vanilla · Warm sugar</div>
+        <div class="label-top-rule" style="color:var(--parchment); margin-bottom:12px;">✦</div>
+        <div class="label-weight" style="color:var(--parchment);">8 oz · Soy Wax · Hand-poured</div>
+        <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:2px; color:var(--gold); margin-top:6px;">MordasinLabs LLC · Miami, FL</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     BRAND VOICE
+     ============================================================ -->
+<section class="section">
+  <div class="section-label" style="text-align:center;">How the brand sounds</div>
+  <h2 class="section-title">Brand Voice</h2>
+  <p class="section-subtitle">The visual is Victorian Buenos Aires. The voice matches.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+    <div style="background:var(--parchment); border:1px solid var(--gold); padding:32px; border-radius:4px;">
+      <div class="section-label" style="color:var(--navy);">Voice pillars</div>
+      <div style="margin-top:16px;">
+        <div style="margin-bottom:20px;">
+          <div style="font-family:'Cinzel',serif; font-size:12px; color:var(--navy); font-weight:600; letter-spacing:1px; margin-bottom:6px;">EVOCATIVE</div>
+          <div style="font-size:14px; color:var(--ink); opacity:0.8; font-style:italic;">"Not 'vanilla scent' — 'the kitchen on Sunday afternoon, the sweetness your grandmother made without a recipe.'"</div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <div style="font-family:'Cinzel',serif; font-size:12px; color:var(--navy); font-weight:600; letter-spacing:1px; margin-bottom:6px;">BILINGUAL — NATURALLY</div>
+          <div style="font-size:14px; color:var(--ink); opacity:0.8; font-style:italic;">"Cada vela tiene historia. Every candle has a story. Code-switch without apology."</div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <div style="font-family:'Cinzel',serif; font-size:12px; color:var(--navy); font-weight:600; letter-spacing:1px; margin-bottom:6px;">HONEST ABOUT CRAFT</div>
+          <div style="font-size:14px; color:var(--ink); opacity:0.8; font-style:italic;">"Show the wax, the wicks, the pour. The mess and the care."</div>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif; font-size:12px; color:var(--navy); font-weight:600; letter-spacing:1px; margin-bottom:6px;">WARM, NEVER PRECIOUS</div>
+          <div style="font-size:14px; color:var(--ink); opacity:0.8; font-style:italic;">"Heritage without pretension. Handmade without apology."</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="background:var(--navy); border-radius:4px; padding:24px;">
+        <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:8px;">TikTok bio — English</div>
+        <div style="font-family:'Lora',serif; color:var(--parchment); font-size:14px; line-height:1.6;">Hand-poured candles. Buenos Aires roots, Miami hands. Every scent holds a memory. 🕯️🇦🇷<br><span style="color:var(--gold); font-family:'Cinzel',serif; font-size:11px;">aljibe.shop</span></div>
+      </div>
+      <div style="background:var(--navy); border-radius:4px; padding:24px;">
+        <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:8px;">TikTok bio — Spanish</div>
+        <div style="font-family:'Lora',serif; color:var(--parchment); font-size:14px; line-height:1.6;">Velas hechas a mano. Raíces porteñas, manos en Miami. Cada aroma guarda un recuerdo. 🕯️🇦🇷<br><span style="color:var(--gold); font-family:'Cinzel',serif; font-size:11px;">aljibe.shop</span></div>
+      </div>
+      <div style="background:var(--brick); border-radius:4px; padding:24px;">
+        <div style="font-family:'Cinzel',serif; font-size:9px; letter-spacing:3px; color:var(--parchment); text-transform:uppercase; margin-bottom:8px;">Brand story hook — TikTok video</div>
+        <div style="font-family:'Lora',serif; color:var(--parchment); font-size:14px; line-height:1.6; font-style:italic;">"In Buenos Aires, every old house has an aljibe — a stone well in the courtyard. A place where something precious is held, drawn up slowly. That's what a candle is."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GUIDELINES
+     ============================================================ -->
+<section style="background:var(--parchment); padding:80px 40px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label" style="text-align:center;">Protect the mark</div>
+    <h2 class="section-title">Usage Guidelines</h2>
+    <p class="section-subtitle">What keeps the brand coherent as it grows.</p>
+
+    <div class="guidelines-grid">
+      <div class="guideline-col do-col">
+        <h3>✦ Do</h3>
+        <div class="guideline-item do-item">Use the full primary logo on all physical packaging — never crop or scale below minimum sizes.</div>
+        <div class="guideline-item do-item">Use Cinzel Decorative for all "ALJIBE" wordmark applications. No substitutions.</div>
+        <div class="guideline-item do-item">Maintain parchment or navy backgrounds — the logo reads best on aged warm tones, not stark white.</div>
+        <div class="guideline-item do-item">Keep the gold outline present whenever the logo appears on dark surfaces.</div>
+        <div class="guideline-item do-item">Allow organic surface variation (wood grain, wax texture, parchment) under the logo — the brand was born from physical craft.</div>
+        <div class="guideline-item do-item">Use the badge mark (circular SVG) for profile images and wax seals — it scales down cleanly.</div>
+        <div class="guideline-item do-item">Code-switch freely in captions. English and Spanish together are on-brand.</div>
+        <div class="guideline-item do-item">Show the real workspace — the pouring, the drying, the labeling. Authenticity is the product.</div>
+      </div>
+      <div class="guideline-col dont-col">
+        <h3>✕ Don't</h3>
+        <div class="guideline-item dont-item">Don't flatten or recolor the scrollwork. The ornate detail is the mark — removing it makes it generic.</div>
+        <div class="guideline-item dont-item">Don't use the logo on pure white or neon backgrounds. The parchment aesthetic dies on clinical white.</div>
+        <div class="guideline-item dont-item">Don't use sans-serif fonts (Helvetica, Arial, Montserrat) for brand headers. They break the Victorian voice.</div>
+        <div class="guideline-item dont-item">Don't crop the circular frame — the border is structural, not decorative.</div>
+        <div class="guideline-item dont-item">Don't use drop shadows on the wordmark. The period-accurate style doesn't use soft modern shadows.</div>
+        <div class="guideline-item dont-item">Don't add emojis to the logo or label system — keep the mark clean. Use emojis only in social copy.</div>
+        <div class="guideline-item dont-item">Don't refer to the creator by name on any official brand asset. Hands only. Story only.</div>
+        <div class="guideline-item dont-item">Don't apply the logo to busy photography without a clean field or overlay for legibility.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="ornament-rule" style="max-width:300px; margin:0 auto 32px; color:rgba(196,154,42,0.3);">✦</div>
+  <h2>Aljibe</h2>
+  <p>Velas Artesanales · Hand-poured in Miami · Rooted in Buenos Aires</p>
+  <p style="margin-top:8px;">@aljibeshop · aljibe.shop</p>
+  <div class="ornament-rule" style="max-width:300px; margin:32px auto 0; color:rgba(196,154,42,0.3);">✦</div>
+  <div class="footer-meta" style="margin-top:32px;">Brand Identity Package v2 · MordasinLabs LLC · 2025</div>
+</footer>
+
+<script>
+// Try to load the logo from multiple possible locations
+const img = document.getElementById('primary-logo');
+const sources = [
+  'aljibe-logo.png',
+  '/root/aljibe/aljibe-logo.png',
+  '../aljibe-logo.png'
+];
+let idx = 0;
+function tryNext() {
+  if (idx < sources.length) {
+    img.src = sources[idx++];
+  } else {
+    img.style.display = 'none';
+    document.getElementById('logo-placeholder').style.display = 'flex';
+  }
+}
+img.onerror = tryNext;
+</script>
+</body>
+</html>

@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Aljibe — Brand Package</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap');
+
+:root {
+  --terracotta: #C4622D;
+  --terracotta-light: #E8956A;
+  --terracotta-dark: #8B3D18;
+  --navy: #1E3248;
+  --navy-light: #2B4C6F;
+  --gold: #B8922A;
+  --gold-light: #D4B060;
+  --cream: #F5EFE6;
+  --cream-dark: #EDE3D6;
+  --stone: #8B7355;
+  --stone-light: #C4B49A;
+  --ink: #1C1410;
+  --ink-muted: #5C4A3A;
+  --white: #FFFFFF;
+  --border: rgba(28,20,16,0.1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #F0E8DE;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* PAGE SECTIONS */
+.page-section {
+  padding: 80px 60px;
+  border-bottom: 1px solid var(--border);
+}
+.page-section:last-child { border-bottom: none; }
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.section-sub {
+  color: var(--ink-muted);
+  font-size: 13px;
+  max-width: 560px;
+  margin-bottom: 48px;
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(196,98,45,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(184,146,42,0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(30,50,72,0.4) 0%, transparent 70%);
+  pointer-events:none;
+}
+.cover-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  margin-bottom: 48px;
+  font-weight: 500;
+}
+.cover-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.12em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.cover-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(16px, 2.5vw, 22px);
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 60px;
+}
+.cover-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--terracotta);
+  margin: 0 auto 60px;
+}
+.cover-meta {
+  font-size: 11px;
+  color: rgba(245,239,230,0.3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── CONCEPT ── */
+.concept-section {
+  background: var(--cream);
+}
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.concept-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+.concept-text em { color: var(--terracotta); font-style: normal; font-weight: 500; }
+.concept-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pillar {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.pillar-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pillar-title {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--terracotta);
+  margin-bottom: 4px;
+}
+.pillar-desc {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+/* ── COLOR ── */
+.color-section { background: #F0E8DE; }
+.color-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+.swatch {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(28,20,16,0.08);
+}
+.swatch-color {
+  height: 100px;
+}
+.swatch-info {
+  background: white;
+  padding: 12px 14px;
+}
+.swatch-name {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.swatch-hex {
+  font-size: 11px;
+  color: var(--ink-muted);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.05em;
+}
+.swatch-role {
+  font-size: 10px;
+  color: var(--stone);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── TYPE ── */
+.type-section { background: var(--cream); }
+.type-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.type-block {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  background: white;
+}
+.type-block-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 16px;
+}
+.type-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.type-display.italic { font-style: italic; color: var(--terracotta); }
+.type-body-demo {
+  font-size: 14px;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.type-spec {
+  font-size: 10px;
+  color: var(--stone-light);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ── LOGOS ── */
+.logo-section { background: #F0E8DE; }
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.logo-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.logo-card-canvas {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+.logo-card-label {
+  padding: 14px 20px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-card-label span { font-weight: 300; text-transform: none; letter-spacing: 0; font-size: 12px; }
+
+.canvas-cream { background: var(--cream); }
+.canvas-dark { background: var(--ink); }
+.canvas-terracotta { background: var(--terracotta); }
+.canvas-navy { background: var(--navy); }
+.canvas-stone { background: #E8DDD0; }
+.canvas-white { background: white; border: 1px solid var(--border); }
+
+.label-light { background: white; color: var(--ink); border-top: 1px solid var(--border); }
+.label-dark { background: var(--ink); color: rgba(245,239,230,0.6); }
+
+/* ── ICONS ── */
+.icon-section { background: var(--cream); }
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+.icon-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+}
+.icon-card-bg {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-card-name {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+/* ── SOCIAL MEDIA ── */
+.social-section { background: #F0E8DE; }
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.social-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.social-card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.social-card-preview {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.social-avatar {
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.social-info {
+  flex: 1;
+}
+.social-handle {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.social-followers {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+.social-bio {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.profile-size {
+  font-size: 10px;
+  color: var(--stone-light);
+  text-align: right;
+  padding: 8px 20px 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ── PATTERN ── */
+.pattern-section { background: var(--cream); }
+.pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.pattern-card {
+  border-radius: 16px;
+  overflow: hidden;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.pattern-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.35);
+  color: white;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  font-weight: 500;
+}
+
+/* ── GUIDELINES ── */
+.guide-section { background: #F0E8DE; }
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.guide-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+.guide-card-header {
+  padding: 14px 20px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.guide-card-header.do { background: #2f6b47; color: white; }
+.guide-card-header.dont { background: #8B3030; color: white; }
+.guide-card-body {
+  background: white;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 20px;
+}
+.guide-item {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.guide-item:last-child { margin-bottom: 0; }
+.guide-dot-do { color: #2f6b47; font-size: 16px; flex-shrink: 0; line-height: 1.4; }
+.guide-dot-dont { color: #8B3030; font-size: 16px; flex-shrink: 0; line-height: 1.4; }
+
+@media (max-width: 700px) {
+  .page-section { padding: 48px 24px; }
+  .concept-grid, .type-showcase, .guide-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">Brand Identity Package · 2025</div>
+  <!-- Cover logo SVG -->
+  <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:28px;">
+    <circle cx="60" cy="60" r="56" fill="none" stroke="#C4622D" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="60" cy="60" r="46" fill="none" stroke="#C4622D" stroke-width="0.8" opacity="0.3"/>
+    <!-- Stone ring segments -->
+    <path d="M60 14 A46 46 0 0 1 99.6 37" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M99.6 37 A46 46 0 0 1 106 60" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M106 60 A46 46 0 0 1 99.6 83" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M99.6 83 A46 46 0 0 1 83 99.6" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M83 99.6 A46 46 0 0 1 60 106" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M60 106 A46 46 0 0 1 37 99.6" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M37 99.6 A46 46 0 0 1 20.4 83" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M20.4 83 A46 46 0 0 1 14 60" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M14 60 A46 46 0 0 1 20.4 37" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M20.4 37 A46 46 0 0 1 37 20.4" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M37 20.4 A46 46 0 0 1 60 14" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <!-- Inner well -->
+    <circle cx="60" cy="60" r="24" fill="#1C1410" stroke="#8B7355" stroke-width="1"/>
+    <circle cx="60" cy="60" r="20" fill="none" stroke="rgba(139,115,85,0.3)" stroke-width="0.5"/>
+    <!-- Flame -->
+    <path d="M60 76 C60 76 52 68 52 62 C52 55 57 50 60 46 C60 46 60 52 64 54 C66 55 68 57 68 62 C68 68 60 76 60 76Z" fill="#C4622D" opacity="0.9"/>
+    <path d="M60 73 C60 73 55 67 55 63 C55 58 58 55 60 52 C60 52 60 56 62 58 C63.5 59 65 61 65 63 C65 67 60 73 60 73Z" fill="#E8956A"/>
+    <path d="M60 70 C60 70 57.5 66 57.5 63.5 C57.5 61 59 59.5 60 58 C60 58 60.5 60 62 61 C63 61.8 63.5 63 63.5 64 C63.5 66.5 60 70 60 70Z" fill="#F5EFE6" opacity="0.8"/>
+    <!-- Cross wires of well -->
+    <line x1="60" y1="36" x2="60" y2="40" stroke="rgba(196,98,45,0.4)" stroke-width="1"/>
+    <line x1="60" y1="80" x2="60" y2="84" stroke="rgba(196,98,45,0.4)" stroke-width="1"/>
+    <line x1="36" y1="60" x2="40" y2="60" stroke="rgba(196,98,45,0.4)" stroke-width="1"/>
+    <line x1="80" y1="60" x2="84" y2="60" stroke="rgba(196,98,45,0.4)" stroke-width="1"/>
+  </svg>
+  <div class="cover-brand">Aljibe</div>
+  <div class="cover-tagline">Velas Artesanales · Hand-poured luxury</div>
+  <div class="cover-divider"></div>
+  <div class="cover-meta">MordasinLabs LLC · aljibe.shop · @aljibeshop</div>
+</div>
+
+<!-- BRAND CONCEPT -->
+<div class="page-section concept-section">
+  <div class="section-label">Brand Concept</div>
+  <h2 class="section-title">Where Buenos Aires lives in every flame</h2>
+  <p class="section-sub">The philosophical foundation of the brand identity.</p>
+  <div class="concept-grid">
+    <div>
+      <p class="concept-text">
+        An <em>aljibe</em> is the stone well at the heart of a Buenos Aires courtyard —
+        cool, deep, and full of something precious. It holds water the way a candle
+        holds scent: quietly, patiently, until someone needs it.<br/><br/>
+        Every Aljibe candle is a vessel. What lives inside it is memory —
+        the <em>jacarandas</em> in bloom along Palermo streets, rain on colonial cobblestone,
+        the kitchen of someone's abuela on a Sunday afternoon.<br/><br/>
+        <em>Hecho con amor. Desde Buenos Aires hasta Miami.</em>
+      </p>
+    </div>
+    <div class="concept-pillars">
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#C4622D" stroke-width="1.5" fill="none"/>
+          <circle cx="18" cy="18" r="8" fill="#C4622D" opacity="0.15"/>
+          <path d="M18 24 C18 24 13 19 13 16 C13 12.5 15.5 10 18 8 C18 8 18 12 21 14 C22.5 15 24 16.5 24 18.5 C24 21 18 24 18 24Z" fill="#C4622D"/>
+        </svg>
+        <div>
+          <div class="pillar-title">Artisan Heritage</div>
+          <div class="pillar-desc">Hand-poured, small-batch, made from scratch. The same care a Buenos Aires craftsperson has always brought to their trade.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#B8922A" stroke-width="1.5" fill="none"/>
+          <path d="M10 22 Q14 14 18 18 Q22 22 26 14" stroke="#B8922A" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="10" cy="22" r="2" fill="#B8922A"/>
+          <circle cx="26" cy="14" r="2" fill="#B8922A"/>
+        </svg>
+        <div>
+          <div class="pillar-title">Dual Identity</div>
+          <div class="pillar-desc">Argentine roots. Miami soul. Bilingual by nature — as comfortable in English as in Spanish, at home in both worlds.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#1E3248" stroke-width="1.5" fill="none"/>
+          <rect x="12" y="14" width="12" height="10" rx="1" stroke="#1E3248" stroke-width="1.5" fill="none"/>
+          <path d="M15 14 L15 12 Q18 9 21 12 L21 14" stroke="#1E3248" stroke-width="1.5" fill="none"/>
+          <line x1="18" y1="17" x2="18" y2="21" stroke="#1E3248" stroke-width="1.5"/>
+        </svg>
+        <div>
+          <div class="pillar-title">Memory as Product</div>
+          <div class="pillar-desc">A candle's true value is intangible. Scent unlocks memory. Aljibe sells the feeling, not just the wax.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <svg class="pillar-icon" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="16" stroke="#8B7355" stroke-width="1.5" fill="none"/>
+          <circle cx="18" cy="18" r="10" stroke="#8B7355" stroke-width="1" fill="none" stroke-dasharray="2 3"/>
+          <circle cx="18" cy="18" r="4" fill="#8B7355" opacity="0.4"/>
+        </svg>
+        <div>
+          <div class="pillar-title">Stone & Fire</div>
+          <div class="pillar-desc">The well is stone: ancient, grounded, enduring. The flame is fire: alive, warm, ephemeral. Together they are Aljibe.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COLOR PALETTE -->
+<div class="page-section color-section">
+  <div class="section-label">Color Palette</div>
+  <h2 class="section-title">Six colors. One world.</h2>
+  <p class="section-sub">Every color is drawn from the physical world of the brand — the burnt walls of La Boca, the night sky above the Río de la Plata, gold doorknobs in Recoleta, cream-painted colonial stone.</p>
+  <div class="color-row">
+    <div class="swatch">
+      <div class="swatch-color" style="background:#C4622D;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Terracotta</div>
+        <div class="swatch-hex">#C4622D</div>
+        <div class="swatch-role">Primary · Flame</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1E3248;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Río Navy</div>
+        <div class="swatch-hex">#1E3248</div>
+        <div class="swatch-role">Secondary · Depth</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#B8922A;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Porteño Gold</div>
+        <div class="swatch-hex">#B8922A</div>
+        <div class="swatch-role">Accent · Luxury</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#F5EFE6;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Caliza Cream</div>
+        <div class="swatch-hex">#F5EFE6</div>
+        <div class="swatch-role">Background · Light</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#8B7355;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Piedra Stone</div>
+        <div class="swatch-hex">#8B7355</div>
+        <div class="swatch-role">Neutral · Grounded</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background:#1C1410;"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Nocturno Ink</div>
+        <div class="swatch-hex">#1C1410</div>
+        <div class="swatch-role">Text · Darkness</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="page-section type-section">
+  <div class="section-label">Typography</div>
+  <h2 class="section-title">Two voices, one brand.</h2>
+  <p class="section-sub">Cormorant Garamond carries the soul — elegant, literary, rooted in European craft. Inter carries the information — precise, modern, frictionless.</p>
+  <div class="type-showcase">
+    <div class="type-block">
+      <div class="type-block-label">Display — Cormorant Garamond Light</div>
+      <div class="type-display">Aljibe</div>
+      <div class="type-display italic">velas artesanales</div>
+      <div class="type-spec">Cormorant Garamond · 300–600 weight · Headlines, brand name, poetry</div>
+    </div>
+    <div class="type-block">
+      <div class="type-block-label">Body — Inter Regular</div>
+      <div class="type-body-demo" style="font-size:18px;font-weight:300;color:var(--ink);margin-bottom:8px;">Hand-poured luxury candles</div>
+      <div class="type-body-demo">Every candle is made from scratch in our Miami studio, inspired by the courtyards of Buenos Aires. Small batch. Big memory.</div>
+      <div class="type-body-demo" style="font-size:12px;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;color:var(--terracotta);">Shop Now · Tienda</div>
+      <div class="type-spec">Inter · 300–600 weight · Body copy, labels, UI, captions</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMARY LOGOS -->
+<div class="page-section logo-section">
+  <div class="section-label">Logo System</div>
+  <h2 class="section-title">Primary mark & variations</h2>
+  <p class="section-sub">The Aljibe mark is a stone well seen from above — a ring of aged stone surrounding a dark well opening, with a flame emerging from its depths.</p>
+  <div class="logo-grid">
+
+    <!-- Primary on cream -->
+    <div class="logo-card">
+      <div class="logo-card-canvas canvas-cream">
+        <svg width="220" height="140" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Icon -->
+          <circle cx="44" cy="70" r="38" fill="none" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
+          <path d="M44 32 A38 38 0 0 1 73.4 47.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M73.4 47.5 A38 38 0 0 1 82 70" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M82 70 A38 38 0 0 1 73.4 92.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M73.4 92.5 A38 38 0 0 1 44 108" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M44 108 A38 38 0 0 1 14.6 92.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M14.6 92.5 A38 38 0 0 1 6 70" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M6 70 A38 38 0 0 1 14.6 47.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M14.6 47.5 A38 38 0 0 1 44 32" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="44" cy="70" r="20" fill="#1C1410" stroke="#8B7355" stroke-width="0.8"/>
+          <path d="M44 82 C44 82 37.5 75 37.5 70 C37.5 63 41 58.5 44 55 C44 55 44 60 47 62 C48.5 63 50.5 65 50.5 69 C50.5 74 44 82 44 82Z" fill="#C4622D"/>
+          <path d="M44 79 C44 79 39 73 39 69.5 C39 65 41.5 62 44 59 C44 59 44 63 46 65 C47 66 48.5 67.5 48.5 70 C48.5 73.5 44 79 44 79Z" fill="#E8956A"/>
+          <path d="M44 76 C44 76 41.5 72 41.5 70 C41.5 67.5 43 66 44 64.5 C44 64.5 44.5 66.5 46 67.5 C47 68 47.5 69.5 47.5 70.5 C47.5 72.5 44 76 44 76Z" fill="#F5EFE6" opacity="0.7"/>
+          <!-- Wordmark -->
+          <text x="95" y="62" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="300" letter-spacing="6" fill="#1C1410">ALJIBE</text>
+          <text x="97" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="400" letter-spacing="3.5" fill="#8B7355">VELAS ARTESANALES</text>
+          <line x1="95" y1="68" x2="210" y2="68" stroke="#C4622D" stroke-width="0.5" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="logo-card-label label-light">Primary Logo — Light <span>Cream background</span></div>
+    </div>
+
+    <!-- Primary on dark -->
+    <div class="logo-card">
+      <div class="logo-card-canvas canvas-dark">
+        <svg width="220" height="140" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="44" cy="70" r="38" fill="none" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
+          <path d="M44 32 A38 38 0 0 1 73.4 47.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M73.4 47.5 A38 38 0 0 1 82 70" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M82 70 A38 38 0 0 1 73.4 92.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M73.4 92.5 A38 38 0 0 1 44 108" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M44 108 A38 38 0 0 1 14.6 92.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M14.6 92.5 A38 38 0 0 1 6 70" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M6 70 A38 38 0 0 1 14.6 47.5" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M14.6 47.5 A38 38 0 0 1 44 32" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="44" cy="70" r="20" fill="#0D0A08" stroke="#8B7355" stroke-width="0.8"/>
+          <path d="M44 82 C44 82 37.5 75 37.5 70 C37.5 63 41 58.5 44 55 C44 55 44 60 47 62 C48.5 63 50.5 65 50.5 69 C50.5 74 44 82 44 82Z" fill="#C4622D"/>
+          <path d="M44 79 C44 79 39 73 39 69.5 C39 65 41.5 62 44 59 C44 59 44 63 46 65 C47 66 48.5 67.5 48.5 70 C48.5 73.5 44 79 44 79Z" fill="#E8956A"/>
+          <path d="M44 76 C44 76 41.5 72 41.5 70 C41.5 67.5 43 66 44 64.5 C44 64.5 44.5 66.5 46 67.5 C47 68 47.5 69.5 47.5 70.5 C47.5 72.5 44 76 44 76Z" fill="#F5EFE6" opacity="0.7"/>
+          <text x="95" y="62" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="300" letter-spacing="6" fill="#F5EFE6">ALJIBE</text>
+          <text x="97" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="400" letter-spacing="3.5" fill="rgba(245,239,230,0.45)">VELAS ARTESANALES</text>
+          <line x1="95" y1="68" x2="210" y2="68" stroke="#C4622D" stroke-width="0.5" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="logo-card-label label-dark">Primary Logo — Dark <span>Dark background</span></div>
+    </div>
+
+    <!-- Stacked on navy -->
+    <div class="logo-card">
+      <div class="logo-card-canvas canvas-navy">
+        <svg width="180" height="160" viewBox="0 0 180 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="90" cy="62" r="44" fill="none" stroke="#C4622D" stroke-width="1" opacity="0.25"/>
+          <path d="M90 18 A44 44 0 0 1 124.1 36" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M124.1 36 A44 44 0 0 1 134 62" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M134 62 A44 44 0 0 1 124.1 88" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M124.1 88 A44 44 0 0 1 90 106" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M90 106 A44 44 0 0 1 55.9 88" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M55.9 88 A44 44 0 0 1 46 62" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M46 62 A44 44 0 0 1 55.9 36" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M55.9 36 A44 44 0 0 1 90 18" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <circle cx="90" cy="62" r="23" fill="#12202F" stroke="#8B7355" stroke-width="0.8"/>
+          <path d="M90 75 C90 75 83 67.5 83 62 C83 54.5 87 49.5 90 46 C90 46 90 52 93.5 54.5 C95.5 56 97.5 58 97.5 62.5 C97.5 67.5 90 75 90 75Z" fill="#C4622D"/>
+          <path d="M90 72 C90 72 85 66 85 62.5 C85 58 87.5 55 90 52 C90 52 90 56 92.5 58 C93.5 59 95 61 95 63 C95 66.5 90 72 90 72Z" fill="#E8956A"/>
+          <path d="M90 69 C90 69 87 65 87 63 C87 60.5 88.5 59 90 57.5 C90 57.5 90.5 59.5 92 60.5 C93 61.2 93.5 62.5 93.5 63.5 C93.5 65.5 90 69 90 69Z" fill="#F5EFE6" opacity="0.7"/>
+          <text x="90" y="130" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" font-weight="300" letter-spacing="7" fill="#F5EFE6">ALJIBE</text>
+          <text x="90" y="148" text-anchor="middle" font-family="'Inter', sans-serif" font-size="8" font-weight="400" letter-spacing="3" fill="rgba(245,239,230,0.4)">VELAS ARTESANALES</text>
+        </svg>
+      </div>
+      <div class="logo-card-label label-dark">Stacked Logo — Navy <span>Vertical lockup</span></div>
+    </div>
+
+    <!-- Wordmark only on terracotta -->
+    <div class="logo-card">
+      <div class="logo-card-canvas canvas-terracotta">
+        <svg width="240" height="100" viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <text x="120" y="58" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="300" letter-spacing="10" fill="rgba(245,239,230,0.95)">ALJIBE</text>
+          <text x="120" y="78" text-anchor="middle" font-family="'Inter', sans-serif" font-size="9" font-weight="400" letter-spacing="4" fill="rgba(245,239,230,0.5)">VELAS ARTESANALES</text>
+          <line x1="40" y1="64" x2="90" y2="64" stroke="rgba(245,239,230,0.3)" stroke-width="0.5"/>
+          <line x1="150" y1="64" x2="200" y2="64" stroke="rgba(245,239,230,0.3)" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="logo-card-label label-dark">Wordmark — Terracotta <span>Type-only version</span></div>
+    </div>
+
+    <!-- Gold on stone -->
+    <div class="logo-card">
+      <div class="logo-card-canvas canvas-stone">
+        <svg width="220" height="140" viewBox="0 0 220 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="44" cy="70" r="38" fill="none" stroke="#B8922A" stroke-width="1" opacity="0.3"/>
+          <path d="M44 32 A38 38 0 0 1 73.4 47.5" stroke="#B8922A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M73.4 47.5 A38 38 0 0 1 82 70" stroke="#D4B060" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M82 70 A38 38 0 0 1 73.4 92.5" stroke="#B8922A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M73.4 92.5 A38 38 0 0 1 44 108" stroke="#D4B060" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M44 108 A38 38 0 0 1 14.6 92.5" stroke="#B8922A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M14.6 92.5 A38 38 0 0 1 6 70" stroke="#D4B060" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M6 70 A38 38 0 0 1 14.6 47.5" stroke="#B8922A" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M14.6 47.5 A38 38 0 0 1 44 32" stroke="#D4B060" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="44" cy="70" r="20" fill="rgba(28,20,16,0.08)" stroke="#B8922A" stroke-width="0.8"/>
+          <path d="M44 82 C44 82 37.5 75 37.5 70 C37.5 63 41 58.5 44 55 C44 55 44 60 47 62 C48.5 63 50.5 65 50.5 69 C50.5 74 44 82 44 82Z" fill="#B8922A"/>
+          <path d="M44 79 C44 79 39 73 39 69.5 C39 65 41.5 62 44 59 C44 59 44 63 46 65 C47 66 48.5 67.5 48.5 70 C48.5 73.5 44 79 44 79Z" fill="#D4B060"/>
+          <text x="95" y="62" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="300" letter-spacing="6" fill="#1C1410">ALJIBE</text>
+          <text x="97" y="80" font-family="'Inter', sans-serif" font-size="9" font-weight="400" letter-spacing="3.5" fill="#8B7355">VELAS ARTESANALES</text>
+          <line x1="95" y1="68" x2="210" y2="68" stroke="#B8922A" stroke-width="0.5" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="logo-card-label label-light">Gold Variant — Stone <span>Luxury events / packaging</span></div>
+    </div>
+
+    <!-- Icon only -->
+    <div class="logo-card">
+      <div class="logo-card-canvas canvas-white" style="gap:20px;">
+        <!-- Large icon -->
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="36" fill="none" stroke="#C4622D" stroke-width="1" opacity="0.3"/>
+          <path d="M40 4 A36 36 0 0 1 71.2 22" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M71.2 22 A36 36 0 0 1 76 40" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M76 40 A36 36 0 0 1 71.2 58" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M71.2 58 A36 36 0 0 1 40 76" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M40 76 A36 36 0 0 1 8.8 58" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M8.8 58 A36 36 0 0 1 4 40" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M4 40 A36 36 0 0 1 8.8 22" stroke="#C4622D" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M8.8 22 A36 36 0 0 1 40 4" stroke="#8B7355" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="40" cy="40" r="18" fill="#1C1410" stroke="#8B7355" stroke-width="0.8"/>
+          <path d="M40 51 C40 51 33.5 44 33.5 39 C33.5 32 37 27 40 24 C40 24 40 29 43.5 31.5 C45.5 33 47 35 47 39 C47 44 40 51 40 51Z" fill="#C4622D"/>
+          <path d="M40 48 C40 48 35.5 43 35.5 40 C35.5 36 38 33 40 30 C40 30 40 34 42.5 36 C43.5 37 45 38.5 45 40.5 C45 43.5 40 48 40 48Z" fill="#E8956A"/>
+          <path d="M40 45 C40 45 37.5 41.5 37.5 39.5 C37.5 37.5 39 36 40 34.5 C40 34.5 40.5 36.5 42 37.5 C43 38.2 43.5 39.5 43.5 40.5 C43.5 42.5 40 45 40 45Z" fill="#F5EFE6" opacity="0.7"/>
+        </svg>
+        <!-- Small icons -->
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:center;">
+          <svg width="48" height="48" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="36" fill="none" stroke="#C4622D" stroke-width="1.2" opacity="0.3"/>
+            <path d="M40 4 A36 36 0 0 1 71.2 22" stroke="#C4622D" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M71.2 22 A36 36 0 0 1 76 40" stroke="#8B7355" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M76 40 A36 36 0 0 1 71.2 58" stroke="#C4622D" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M71.2 58 A36 36 0 0 1 40 76" stroke="#8B7355" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M40 76 A36 36 0 0 1 8.8 58" stroke="#C4622D" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M8.8 58 A36 36 0 0 1 4 40" stroke="#8B7355" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M4 40 A36 36 0 0 1 8.8 22" stroke="#C4622D" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M8.8 22 A36 36 0 0 1 40 4" stroke="#8B7355" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <circle cx="40" cy="40" r="18" fill="#1C1410"/>
+            <path d="M40 51 C40 51 33.5 44 33.5 39 C33.5 32 37 27 40 24 C40 24 40 29 43.5 31.5 C45.5 33 47 35 47 39 C47 44 40 51 40 51Z" fill="#C4622D"/>
+            <path d="M40 48 C40 48 35.5 43 35.5 40 C35.5 36 38 33 40 30 C40 30 40 34 42.5 36 C43.5 37 45 38.5 45 40.5 C45 43.5 40 48 40 48Z" fill="#E8956A"/>
+          </svg>
+          <svg width="32" height="32" viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="38" fill="#1C1410"/>
+            <circle cx="40" cy="40" r="34" fill="none" stroke="#C4622D" stroke-width="3" opacity="0.5"/>
+            <circle cx="40" cy="40" r="18" fill="#0D0A08"/>
+            <path d="M40 51 C40 51 33.5 44 33.5 39 C33.5 32 37 27 40 24 C40 24 40 29 43.5 31.5 C45.5 33 47 35 47 39 C47 44 40 51 40 51Z" fill="#C4622D"/>
+            <path d="M40 48 C40 48 36 43 36 40 C36 36 38 33 40 30 C40 30 40 34 42.5 36 C44 37.5 45 39 45 40.5 C45 43.5 40 48 40 48Z" fill="#E8956A"/>
+          </svg>
+        </div>
+      </div>
+      <div class="logo-card-label label-light">Icon Mark — 3 sizes <span>80px · 48px · 32px</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SOCIAL MEDIA PROFILES -->
+<div class="page-section social-section">
+  <div class="section-label">Social Media</div>
+  <h2 class="section-title">Profile images</h2>
+  <p class="section-sub">Two versions of the profile image — one for light platforms, one for dark. TikTok and Instagram both display at 200×200px minimum; the mark is designed to read clearly at any size.</p>
+  <div class="social-grid">
+
+    <!-- TikTok profile -->
+    <div class="social-card">
+      <div class="social-card-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.25 8.25 0 004.84 1.55V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+        TikTok · @aljibeshop
+      </div>
+      <div class="social-card-preview">
+        <svg width="72" height="72" viewBox="0 0 80 80" fill="none" class="social-avatar">
+          <circle cx="40" cy="40" r="40" fill="#1C1410"/>
+          <circle cx="40" cy="40" r="33" fill="none" stroke="#C4622D" stroke-width="2" opacity="0.4"/>
+          <path d="M40 7 A33 33 0 0 1 68.6 23.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M68.6 23.5 A33 33 0 0 1 73 40" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M73 40 A33 33 0 0 1 68.6 56.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M68.6 56.5 A33 33 0 0 1 40 73" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M40 73 A33 33 0 0 1 11.4 56.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M11.4 56.5 A33 33 0 0 1 7 40" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M7 40 A33 33 0 0 1 11.4 23.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M11.4 23.5 A33 33 0 0 1 40 7" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <circle cx="40" cy="40" r="18" fill="#0D0A08" stroke="#8B7355" stroke-width="0.8"/>
+          <path d="M40 51 C40 51 33.5 44 33.5 39 C33.5 32 37 27 40 24 C40 24 40 29 43.5 31.5 C45.5 33 47 35 47 39 C47 44 40 51 40 51Z" fill="#C4622D"/>
+          <path d="M40 48 C40 48 35.5 43 35.5 40 C35.5 36 38 33 40 30 C40 30 40 34 42.5 36 C43.5 37 45 38.5 45 40.5 C45 43.5 40 48 40 48Z" fill="#E8956A"/>
+          <path d="M40 45 C40 45 37.5 41.5 37.5 39.5 C37.5 37.5 39 36 40 34.5 C40 34.5 40.5 36.5 42 37.5 C43 38.2 43.5 39.5 43.5 40.5 C43.5 42.5 40 45 40 45Z" fill="#F5EFE6" opacity="0.7"/>
+        </svg>
+        <div class="social-info">
+          <div class="social-handle">@aljibeshop</div>
+          <div class="social-followers">🕯️ Hand-poured desde Buenos Aires</div>
+          <div class="social-bio">Miami-made · Ships nationwide<br/>Tienda en español también 🇦🇷<br/>aljibe.shop 👇</div>
+        </div>
+      </div>
+      <div class="profile-size">200 × 200px · Circular crop</div>
+    </div>
+
+    <!-- Instagram profile -->
+    <div class="social-card">
+      <div class="social-card-header">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram · @aljibeshop (future)
+      </div>
+      <div class="social-card-preview">
+        <svg width="72" height="72" viewBox="0 0 80 80" fill="none" class="social-avatar">
+          <circle cx="40" cy="40" r="40" fill="#F5EFE6"/>
+          <circle cx="40" cy="40" r="33" fill="none" stroke="#C4622D" stroke-width="2" opacity="0.3"/>
+          <path d="M40 7 A33 33 0 0 1 68.6 23.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M68.6 23.5 A33 33 0 0 1 73 40" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M73 40 A33 33 0 0 1 68.6 56.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M68.6 56.5 A33 33 0 0 1 40 73" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M40 73 A33 33 0 0 1 11.4 56.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M11.4 56.5 A33 33 0 0 1 7 40" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M7 40 A33 33 0 0 1 11.4 23.5" stroke="#C4622D" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M11.4 23.5 A33 33 0 0 1 40 7" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <circle cx="40" cy="40" r="18" fill="#1C1410" stroke="#8B7355" stroke-width="0.8"/>
+          <path d="M40 51 C40 51 33.5 44 33.5 39 C33.5 32 37 27 40 24 C40 24 40 29 43.5 31.5 C45.5 33 47 35 47 39 C47 44 40 51 40 51Z" fill="#C4622D"/>
+          <path d="M40 48 C40 48 35.5 43 35.5 40 C35.5 36 38 33 40 30 C40 30 40 34 42.5 36 C43.5 37 45 38.5 45 40.5 C45 43.5 40 48 40 48Z" fill="#E8956A"/>
+          <path d="M40 45 C40 45 37.5 41.5 37.5 39.5 C37.5 37.5 39 36 40 34.5 C40 34.5 40.5 36.5 42 37.5 C43 38.2 43.5 39.5 43.5 40.5 C43.5 42.5 40 45 40 45Z" fill="#F5EFE6" opacity="0.7"/>
+        </svg>
+        <div class="social-info">
+          <div class="social-handle">aljibeshop</div>
+          <div class="social-followers">🕯️ Velas artesanales · Buenos Aires → Miami</div>
+          <div class="social-bio">Hand-poured, small batch<br/>🇦🇷 Desde el corazón<br/>🔗 aljibe.shop</div>
+        </div>
+      </div>
+      <div class="profile-size">200 × 200px · Circular crop</div>
+    </div>
+
+    <!-- TikTok banner concept -->
+    <div class="social-card" style="grid-column: 1 / -1;">
+      <div class="social-card-header">TikTok Bio Banner Concept</div>
+      <div style="padding:0;">
+        <svg width="100%" height="140" viewBox="0 0 800 140" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="800" height="140" fill="#1C1410"/>
+          <rect width="800" height="140" fill="url(#bggrad)" opacity="0.6"/>
+          <defs>
+            <linearGradient id="bggrad" x1="0" y1="0" x2="800" y2="140" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#8B3D18" stop-opacity="0.5"/>
+              <stop offset="50%" stop-color="#1C1410" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#1E3248" stop-opacity="0.4"/>
+            </linearGradient>
+          </defs>
+          <!-- Pattern dots -->
+          <circle cx="40" cy="20" r="1" fill="#C4622D" opacity="0.2"/>
+          <circle cx="80" cy="40" r="1" fill="#C4622D" opacity="0.2"/>
+          <circle cx="120" cy="15" r="1" fill="#C4622D" opacity="0.2"/>
+          <circle cx="20" cy="80" r="1" fill="#C4622D" opacity="0.15"/>
+          <circle cx="760" cy="30" r="1" fill="#B8922A" opacity="0.2"/>
+          <circle cx="720" cy="110" r="1" fill="#B8922A" opacity="0.2"/>
+          <!-- Mini well icon left -->
+          <circle cx="80" cy="70" r="42" fill="none" stroke="#C4622D" stroke-width="0.5" opacity="0.15"/>
+          <circle cx="80" cy="70" r="32" fill="none" stroke="#C4622D" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="80" cy="70" r="16" fill="rgba(0,0,0,0.5)" stroke="#8B7355" stroke-width="0.8"/>
+          <path d="M80 80 C80 80 75 74 75 71 C75 66 77.5 63 80 61 C80 61 80 64 82 65.5 C83 66.3 84.5 67.5 84.5 70 C84.5 73 80 80 80 80Z" fill="#C4622D" opacity="0.9"/>
+          <path d="M80 78 C80 78 76.5 73 76.5 71 C76.5 68 78 66 80 64 C80 64 80.5 66.5 82 67.5 C82.8 68.2 83.5 69.5 83.5 71 C83.5 73 80 78 80 78Z" fill="#E8956A"/>
+          <!-- Center text -->
+          <text x="400" y="55" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="42" font-weight="300" letter-spacing="12" fill="#F5EFE6" opacity="0.95">ALJIBE</text>
+          <text x="400" y="78" text-anchor="middle" font-family="'Inter', sans-serif" font-size="10" font-weight="400" letter-spacing="5" fill="rgba(245,239,230,0.4)">VELAS ARTESANALES · HAND-POURED LUXURY</text>
+          <line x1="260" y1="65" x2="330" y2="65" stroke="rgba(196,98,45,0.35)" stroke-width="0.5"/>
+          <line x1="470" y1="65" x2="540" y2="65" stroke="rgba(196,98,45,0.35)" stroke-width="0.5"/>
+          <!-- Buenos Aires / Miami -->
+          <text x="400" y="105" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-style="italic" font-size="16" fill="rgba(245,239,230,0.3)" letter-spacing="2">Buenos Aires → Miami · aljibe.shop</text>
+        </svg>
+      </div>
+      <div class="profile-size">800 × 140px · Profile background banner</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BRAND PATTERNS -->
+<div class="page-section pattern-section">
+  <div class="section-label">Brand Patterns</div>
+  <h2 class="section-title">Texture & surface elements</h2>
+  <p class="section-sub">Secondary visual elements drawn from Buenos Aires architecture — azulejo tile, stone texture, ironwork — for packaging, backgrounds, and digital surfaces.</p>
+  <div class="pattern-grid">
+
+    <!-- Stone ring pattern -->
+    <div class="pattern-card" style="background:#1C1410;">
+      <svg width="100%" height="100%" viewBox="0 0 240 200" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="wellPattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <circle cx="30" cy="30" r="22" fill="none" stroke="#C4622D" stroke-width="0.6" opacity="0.3"/>
+            <circle cx="30" cy="30" r="14" fill="none" stroke="#8B7355" stroke-width="0.4" opacity="0.2"/>
+            <circle cx="30" cy="30" r="5" fill="none" stroke="#C4622D" stroke-width="0.4" opacity="0.25"/>
+          </pattern>
+        </defs>
+        <rect width="240" height="200" fill="url(#wellPattern)"/>
+      </svg>
+      <div class="pattern-card-label">Well Ring — Dark surface</div>
+    </div>
+
+    <!-- Azulejo pattern -->
+    <div class="pattern-card" style="background:#F5EFE6;">
+      <svg width="100%" height="100%" viewBox="0 0 240 200" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="azulejoPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <rect width="40" height="40" fill="none" stroke="#C4622D" stroke-width="0.3" opacity="0.2"/>
+            <line x1="0" y1="20" x2="40" y2="20" stroke="#8B7355" stroke-width="0.3" opacity="0.15"/>
+            <line x1="20" y1="0" x2="20" y2="40" stroke="#8B7355" stroke-width="0.3" opacity="0.15"/>
+            <circle cx="20" cy="20" r="4" fill="none" stroke="#C4622D" stroke-width="0.5" opacity="0.25"/>
+            <circle cx="0" cy="0" r="4" fill="none" stroke="#C4622D" stroke-width="0.5" opacity="0.15"/>
+            <circle cx="40" cy="0" r="4" fill="none" stroke="#C4622D" stroke-width="0.5" opacity="0.15"/>
+            <circle cx="0" cy="40" r="4" fill="none" stroke="#C4622D" stroke-width="0.5" opacity="0.15"/>
+            <circle cx="40" cy="40" r="4" fill="none" stroke="#C4622D" stroke-width="0.5" opacity="0.15"/>
+          </pattern>
+        </defs>
+        <rect width="240" height="200" fill="url(#azulejoPattern)"/>
+      </svg>
+      <div class="pattern-card-label" style="background:rgba(28,20,16,0.25);">Azulejo Tile — Light surface</div>
+    </div>
+
+    <!-- Flame scatter -->
+    <div class="pattern-card" style="background:#1E3248;">
+      <svg width="100%" height="100%" viewBox="0 0 240 200" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="flamePattern" x="0" y="0" width="48" height="56" patternUnits="userSpaceOnUse">
+            <path d="M24 50 C24 50 18 43 18 38 C18 30 21.5 26 24 23 C24 23 24 28 27 30 C28.5 31 30 33 30 36.5 C30 42 24 50 24 50Z" fill="#C4622D" opacity="0.2"/>
+            <path d="M24 47 C24 47 20 41 20 38 C20 34 22 31 24 28 C24 28 24 32 26 34 C27 35 28.5 36.5 28.5 38.5 C28.5 41.5 24 47 24 47Z" fill="#E8956A" opacity="0.15"/>
+          </pattern>
+        </defs>
+        <rect width="240" height="200" fill="url(#flamePattern)"/>
+      </svg>
+      <div class="pattern-card-label">Flame Scatter — Navy surface</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- USAGE GUIDELINES -->
+<div class="page-section guide-section">
+  <div class="section-label">Usage Guidelines</div>
+  <h2 class="section-title">How to use this brand.</h2>
+  <p class="section-sub">A small set of rules that keep Aljibe looking like Aljibe everywhere it appears.</p>
+  <div class="guide-grid">
+    <div class="guide-card">
+      <div class="guide-card-header do">✓ Do</div>
+      <div class="guide-card-body">
+        <div class="guide-item"><span class="guide-dot-do">✓</span>Use the mark on dark, cream, navy, or terracotta backgrounds</div>
+        <div class="guide-item"><span class="guide-dot-do">✓</span>Keep generous clear space around the logo — at least the height of the flame icon on all sides</div>
+        <div class="guide-item"><span class="guide-dot-do">✓</span>Use Cormorant Garamond for all headings and the brand name</div>
+        <div class="guide-item"><span class="guide-dot-do">✓</span>Use the gold variant for packaging, gift cards, and premium touchpoints</div>
+        <div class="guide-item"><span class="guide-dot-do">✓</span>The stone ring segments can alternate terracotta and piedra stone</div>
+        <div class="guide-item"><span class="guide-dot-do">✓</span>Bilingual copy — Spanish first when speaking to Spanish-speaking audiences</div>
+      </div>
+    </div>
+    <div class="guide-card">
+      <div class="guide-card-header dont">✗ Don't</div>
+      <div class="guide-card-body">
+        <div class="guide-item"><span class="guide-dot-dont">✗</span>Don't stretch, rotate, or distort the mark at any angle</div>
+        <div class="guide-item"><span class="guide-dot-dont">✗</span>Don't place the logo on busy photo backgrounds without a scrim or overlay</div>
+        <div class="guide-item"><span class="guide-dot-dont">✗</span>Don't use the wordmark in lowercase — it is always ALJIBE in caps with letter-spacing</div>
+        <div class="guide-item"><span class="guide-dot-dont">✗</span>Don't change the flame color — the terracotta flame is a fixed brand element</div>
+        <div class="guide-item"><span class="guide-dot-dont">✗</span>Don't add drop shadows to the logo mark</div>
+        <div class="guide-item"><span class="guide-dot-dont">✗</span>Don't use any typeface other than Cormorant Garamond + Inter — no exceptions</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
